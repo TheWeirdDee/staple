@@ -1,0 +1,39 @@
+name: Offline tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: v1.7.1
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.28.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: pnpm install --frozen-lockfile
+      - name: Contracts (forge)
+        run: cd contracts && forge test
+      - name: ABI export is up to date
+        run: cd contracts && node script/export-abi.mjs && git diff --exit-code ../reference/src/abi.ts
+      - name: Reference vectors and policy
+        run: pnpm --filter @staple/reference test
+      - name: Keeper (local node + exchange test double)
+        run: pnpm --filter @staple/keeper test
+      - name: Watcher and sampler
+        run: |
+          pip install -r watcher/requirements.txt -r sampler/requirements.txt
+          cd watcher && python -m pytest -q && cd ../sampler && python -m pytest -q
+      - name: Web typecheck and build
+        run: pnpm --filter @staple/web build
