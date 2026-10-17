@@ -124,8 +124,8 @@ export function StateBadge({ state, withText }: { state: MandateStateName; withT
 }
 export const stateText = (s: MandateStateName) => STATE_INFO[s].text;
 
-export function Badge({ tone, children, pending }: { tone: 'ok' | 'warn' | 'bad' | 'info'; children: ReactNode; pending?: boolean }) {
-  return <span className={`badge ${tone} ${pending ? 'pending' : ''}`}>{children}</span>;
+export function Badge({ tone, children, pending, long }: { tone: 'ok' | 'warn' | 'bad' | 'info'; children: ReactNode; pending?: boolean; long?: boolean }) {
+  return <span className={`badge ${tone} ${pending ? 'pending' : ''} ${long ? 'long' : ''}`}>{children}</span>;
 }
 
 export function Stat({ label, value, sub }: { label: ReactNode; value: ReactNode; sub?: ReactNode }) {
