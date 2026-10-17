@@ -35,11 +35,25 @@ export async function ownerApproveAgent(owner: Hex, chainId: number, agentAddres
     message: { hyperliquidChain: 'Testnet', agentAddress: action.agentAddress as Hex, agentName, nonce: BigInt(nonce) },
   });
   const r = { r: `0x${sig.slice(2, 66)}`, s: `0x${sig.slice(66, 130)}`, v: parseInt(sig.slice(130, 132), 16) };
-  const res = await fetch(HL_EXCHANGE, {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ action, nonce, signature: r }),
-  });
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 20_000);
+  let res: Response;
+  try {
+    res = await fetch(HL_EXCHANGE, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ action, nonce, signature: r }),
+      signal: ctrl.signal,
+    });
+  } catch (e) {
+    throw new Error(
+      (e as Error).name === 'AbortError'
+        ? 'Hyperliquid did not answer within 20 seconds. Nothing was confirmed; check the agent list before retrying.'
+        : `Could not reach Hyperliquid: ${(e as Error).message}. Nothing was confirmed.`,
+    );
+  } finally {
+    clearTimeout(timer);
+  }
   const body = await res.json().catch(() => null);
   if (!res.ok || body?.status !== 'ok') {
     throw new Error(`Hyperliquid rejected the request: ${JSON.stringify(body?.response ?? body ?? res.status)}`);
