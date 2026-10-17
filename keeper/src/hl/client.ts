@@ -1,6 +1,6 @@
 import { privateKeyToAccount, type PrivateKeyAccount } from 'viem/accounts';
 import type { Hex } from 'viem';
-import { signApproveAgent, signL1Action, type ApproveAgentAction, type Network } from './signing.js';
+import { signApproveAgent, signL1Action, signUserAction, type ApproveAgentAction, type Network } from './signing.js';
 
 export const HL_API: Record<Network, string> = {
   testnet: 'https://api.hyperliquid-testnet.xyz',
@@ -176,6 +176,29 @@ export class HyperliquidClient {
   /** Exchange-side dead man's switch: cancels all open orders at `time` unless renewed. Max 10 triggers/day. */
   scheduleCancel(time?: number) {
     return this.l1(time === undefined ? { type: 'scheduleCancel' } : { type: 'scheduleCancel', time });
+  }
+
+  /** Owner transfer of a spot token (e.g. "USDC:0x..." or "PURR:0x...") to another HyperCore account. */
+  async spotSend(destination: Hex, token: string, amount: string, signatureChainId: Hex = '0x66eee') {
+    if (!this.account) throw new Error('no signer configured');
+    const time = this.nonces.next();
+    const hyperliquidChain = this.network === 'mainnet' ? 'Mainnet' : 'Testnet';
+    const message = { hyperliquidChain, destination: destination.toLowerCase(), token, amount, time: BigInt(time) };
+    const signature = await signUserAction(
+      this.account,
+      'HyperliquidTransaction:SpotSend',
+      [
+        { name: 'hyperliquidChain', type: 'string' },
+        { name: 'destination', type: 'string' },
+        { name: 'token', type: 'string' },
+        { name: 'amount', type: 'string' },
+        { name: 'time', type: 'uint64' },
+      ],
+      message,
+      signatureChainId,
+    );
+    const action = { type: 'spotSend', signatureChainId, hyperliquidChain, destination: destination.toLowerCase(), token, amount, time };
+    return this.post<any>('/exchange', { action, nonce: time, signature });
   }
 
   /** User-signed action: only the account owner (master key) can approve or replace an API agent. */
