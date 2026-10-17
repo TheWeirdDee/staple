@@ -501,6 +501,12 @@ a {
   border-radius: 999px;
   border: 1px solid transparent;
   white-space: nowrap;
+  max-width: 100%;
+}
+.badge.long {
+  white-space: normal;
+  line-height: 1.35;
+  border-radius: 10px;
 }
 .badge::before {
   content: '';
@@ -755,12 +761,12 @@ legend {
   padding: 0;
   counter-reset: step;
 }
-.steps li {
+.steps > li {
   position: relative;
   padding: 0 0 var(--s5) 44px;
   counter-increment: step;
 }
-.steps li::before {
+.steps > li::before {
   content: counter(step);
   position: absolute;
   left: 0;
@@ -774,7 +780,7 @@ legend {
   font: 500 13px var(--font-mono);
   background: var(--card);
 }
-.steps li::after {
+.steps > li::after {
   content: '';
   position: absolute;
   left: 13.5px;
@@ -783,20 +789,20 @@ legend {
   width: 1.5px;
   background: var(--rule);
 }
-.steps li:last-child::after {
+.steps > li:last-child::after {
   display: none;
 }
-.steps li[data-state='done']::before {
+.steps > li[data-state='done']::before {
   content: '✓';
   background: var(--ok);
   border-color: var(--ok);
   color: #fff;
 }
-.steps li[data-state='active']::before {
+.steps > li[data-state='active']::before {
   border-color: var(--accent);
   color: var(--accent);
 }
-.steps li[data-state='failed']::before {
+.steps > li[data-state='failed']::before {
   content: '!';
   background: var(--bad);
   border-color: var(--bad);
