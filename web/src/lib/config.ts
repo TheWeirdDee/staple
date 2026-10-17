@@ -3,6 +3,8 @@ import { defineChain, type Hex } from 'viem';
 // Local end-to-end tests point the app at a local node; production builds never set these.
 const RPC = (import.meta.env.VITE_STAPLE_RPC as string | undefined) ?? 'https://testnet-rpc.elysium.kinetiq.xyz';
 const CHAIN_ID = Number(import.meta.env.VITE_STAPLE_CHAIN_ID ?? 99801);
+// Multicall3 is deployed on Elysium testnet at the canonical address; local test chains do not have it.
+export const HAS_MULTICALL = CHAIN_ID === 99801;
 
 export const elysiumTestnet = defineChain({
   id: CHAIN_ID,
@@ -11,6 +13,7 @@ export const elysiumTestnet = defineChain({
   rpcUrls: { default: { http: [RPC] } },
   blockExplorers: { default: { name: 'Elysium Explorer', url: 'https://elysium.kinetiq.xyz/testnet-explorer' } },
   testnet: true,
+  ...(HAS_MULTICALL ? { contracts: { multicall3: { address: '0xcA11bde05977b3631167028862bE2a173976CA11' as Hex } } } : {}),
 });
 
 export const HL_INFO = 'https://api.hyperliquid-testnet.xyz/info';
