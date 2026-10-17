@@ -1,0 +1,14 @@
+{
+  "name": "staple",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.28.0",
+  "scripts": {
+    "test:offline": "pnpm -r --filter ./reference --filter ./keeper --filter ./watcher test && cd contracts && forge test",
+    "vectors": "pnpm --filter ./reference vectors",
+    "build": "pnpm -r build"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
