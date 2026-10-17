@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-17T13:13:17.402Z",
-  "commit": "09220f1a63c818abe3a90fb0f49fea8c75ccca98",
+  "generatedAt": "2026-10-17T13:26:46.532Z",
+  "commit": "e4422cd5731b269806089ab4fb034f237a9df797",
   "network": "Hyperliquid testnet + Elysium testnet (not yet deployed)",
   "market": "PURR/USDC spot",
   "gates": [
@@ -26,7 +26,7 @@
       "id": "G4",
       "title": "Pause/revoke UI distinguishes requested and confirmed external outcomes",
       "status": "partial",
-      "evidence": "Implemented in the owner console (separate submitted/confirmed states, five-step exit). Not yet exercised against a live deployment."
+      "evidence": "Browser end-to-end 23/23 on a local node with the exchange test double: PAUSING shown until cancels are confirmed, then PAUSED; exit stays visibly incomplete. Not yet exercised against the testnet deployment."
     },
     {
       "id": "G5",
