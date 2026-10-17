@@ -4,7 +4,7 @@ import type { Hex } from 'viem';
 import { MandateRegistryAbi } from '@staple/reference/abi';
 import { MAX_LEVELS, VALIDATION_HELP, campaignPolicy, validatePolicy, type Policy } from '@staple/reference';
 import { Arrow, ExtLink, LoadError, Notice, SectionHead, Skeleton, StateBadge, Term } from '../components/ui';
-import { explorerTx, loadDeployment, type Deployment } from '../lib/config';
+import { elysiumTestnet, explorerTx, loadDeployment, type Deployment } from '../lib/config';
 import { mandatesOf, readMandate } from '../lib/desk';
 import { fmtE8, parseDec, shortAddr, shortHash } from '../lib/format';
 import { toChainArgs } from '../lib/policy';
@@ -52,7 +52,7 @@ export function WalletGate({ children }: { children: (addr: Hex, dep: Deployment
       <div className="card stack" style={{ maxWidth: 640 }}>
         <h2 className="h3">Switch to Elysium testnet</h2>
         <p className="body">
-          Your wallet is on chain {w.chainId ?? 'unknown'}. Staple’s contracts are on Elysium testnet (chain id 99801). Switching
+          Your wallet is on chain {w.chainId ?? 'unknown'}. Staple’s contracts are on {elysiumTestnet.name} (chain id {elysiumTestnet.id}). Switching
           only changes the network your wallet talks to; it does not move funds.
         </p>
         {w.error && <Notice tone="bad">{w.error}</Notice>}
@@ -443,7 +443,7 @@ function NewMandate({ addr, dep }: { addr: Hex; dep: Deployment }) {
           </Notice>
         )}
         <div className="row" style={{ gap: 12 }}>
-          <button type="submit" className="btn primary" disabled={busy} aria-disabled={!policy}>
+          <button type="submit" className="btn primary" disabled={busy}>
             {tx.phase === 'signing' ? 'Confirm in your wallet…' : tx.phase === 'submitted' ? 'Waiting for Elysium…' : 'Publish draft mandate'} <Arrow />
           </button>
           <button
