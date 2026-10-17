@@ -102,7 +102,10 @@ notice; five-step exit; keeper recovery; watcher reconciliation; HyperCore signi
 
 **On testnet:** contracts deployed on Elysium testnet (`runs/deployment-testnet.json`); mandate 1 created as a draft
 with a fee deposit; keeper, watcher and sampler hosted on GitHub Actions, with watcher heartbeats on-chain; the
-public mandate page reads the live deployment.
+public mandate page reads the live deployment. On a separate test mandate, the Elysium-side safety paths were run
+on testnet: activation fails closed until the watcher checks in, a keeper outage is halted by the watcher's poke
+with no new tick, a watcher outage halts quoting, and pause is immediate (`runs/elysium-cases/`). No exchange order
+was involved, because the account is unfunded.
 
 **In development:** G1 live loop, campaign, demo footage. All are blocked on HyperCore testnet USDC for the owner
 account (see the runbook).
