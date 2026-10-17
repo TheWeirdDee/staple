@@ -1,8 +1,10 @@
 {
-  "generatedAt": "2026-10-17T13:26:46.532Z",
-  "commit": "e4422cd5731b269806089ab4fb034f237a9df797",
-  "network": "Hyperliquid testnet + Elysium testnet (not yet deployed)",
+  "generatedAt": "2026-10-17T22:35:01.255Z",
+  "commit": "b5afa2fa71ce76c0eba8a68858af18087f5cbc47",
+  "network": "Elysium testnet (99801) + Hyperliquid testnet",
   "market": "PURR/USDC spot",
+  "account": "0x7C7e3662afeA282c27bf24329D915C02d4746550",
+  "mandateId": "1",
   "gates": [
     {
       "id": "G1",
@@ -14,7 +16,7 @@
       "id": "G2",
       "title": "Reservation, precision, access-control and idempotency tests pass",
       "status": "met",
-      "evidence": "95 offline tests passed, 0 failed at 9ff9aac9be"
+      "evidence": "96 offline tests passed, 0 failed at ee27ce8c91"
     },
     {
       "id": "G3",
@@ -129,7 +131,7 @@
     },
     {
       "suite": "Keeper: local node + exchange test double, SDK signing vectors",
-      "passed": 20,
+      "passed": 21,
       "failed": 0,
       "command": "pnpm --filter @staple/keeper test"
     },
