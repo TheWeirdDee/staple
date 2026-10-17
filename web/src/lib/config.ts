@@ -1,10 +1,14 @@
 import { defineChain, type Hex } from 'viem';
 
+// Local end-to-end tests point the app at a local node; production builds never set these.
+const RPC = (import.meta.env.VITE_STAPLE_RPC as string | undefined) ?? 'https://testnet-rpc.elysium.kinetiq.xyz';
+const CHAIN_ID = Number(import.meta.env.VITE_STAPLE_CHAIN_ID ?? 99801);
+
 export const elysiumTestnet = defineChain({
-  id: 99801,
-  name: 'Elysium Testnet',
+  id: CHAIN_ID,
+  name: CHAIN_ID === 99801 ? 'Elysium Testnet' : `Local test chain ${CHAIN_ID}`,
   nativeCurrency: { name: 'HYPE', symbol: 'HYPE', decimals: 18 },
-  rpcUrls: { default: { http: ['https://testnet-rpc.elysium.kinetiq.xyz'] } },
+  rpcUrls: { default: { http: [RPC] } },
   blockExplorers: { default: { name: 'Elysium Explorer', url: 'https://elysium.kinetiq.xyz/testnet-explorer' } },
   testnet: true,
 });
