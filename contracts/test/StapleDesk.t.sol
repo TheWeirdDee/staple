@@ -384,6 +384,41 @@ contract StapleDeskTest is TestBase {
         assertTrue(desk.getOrder(b).state == OrderState.FILLED, "still filled");
     }
 
+    function test_healthyBookStayOutCancelsAndDoesNotQuote() public {
+        Policy memory p = policy();
+        p.quotes.bookRule = BookRule.STAY_OUT;
+        vm.prank(OWNER);
+        id = registry.createMandate(p, operator, GUARDIAN, HL);
+        vm.prank(OWNER);
+        registry.depositFees(id, 1e6);
+        activateLive();
+        // Wide external book: not healthy, so the mandate quotes.
+        tickBal(BASE0, QUOTE0);
+        assertEqU(live().length, 4, "quotes into a thin book");
+        ackAll();
+        // External liquidity now meets the policy (spread <= 40 bps, depth >= 3 on both sides): stay out.
+        tick(obsAt(BASE0, QUOTE0, 455600000, 455770000, 0));
+        uint128[] memory l = live();
+        for (uint256 i = 0; i < l.length; i++) {
+            assertTrue(desk.getOrder(l[i]).cancelRequestedAt != 0, "all orders withdrawn");
+        }
+        confirmAllCancels();
+        tick(obsAt(BASE0, QUOTE0, 455600000, 455770000, 0));
+        assertEqU(live().length, 0, "no new quotes while the external book is healthy");
+    }
+
+    function test_healthyBookJoinNeverImproves() public {
+        activateLive();
+        tick(obsAt(BASE0, QUOTE0, 455600000, 455770000, 0));
+        uint128[] memory l = live();
+        assertTrue(l.length > 0, "joins");
+        for (uint256 i = 0; i < l.length; i++) {
+            Order memory o = desk.getOrder(l[i]);
+            if (o.isBuy) assertTrue(o.pxE8 <= 455600000, "bid never above external best bid");
+            else assertTrue(o.pxE8 >= 455770000, "ask never below external best ask");
+        }
+    }
+
     function test_rejectedReleasesReservation() public {
         activateLive();
         tickBal(BASE0, QUOTE0);
