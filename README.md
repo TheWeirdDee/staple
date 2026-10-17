@@ -9,8 +9,10 @@ open-source keeper executes the intents through a trade-only agent the owner app
 reconciles every exchange order and fill against the intents. A public page shows the terms, execution,
 inventory, fees, discrepancies and shutdowns.
 
-> **Status: testnet prototype.** The contracts, keeper, watcher, sampler and web app are built and pass 95 offline
-> tests. The live testnet loop (G1) and the campaign are waiting on testnet funding. The current gate status is
+> **Status: testnet prototype.** The contracts, keeper, watcher, sampler and web app are built and pass 96 offline
+> tests. The contracts are deployed on Elysium testnet and mandate 1 is published as a draft; the hosted watcher
+> sends on-chain heartbeats for it. The live trading loop (G1) and the campaign are waiting on HyperCore testnet
+> funds for the owner account. The current gate status is
 > on [`/proof`](https://theweirddee.github.io/staple/#/proof) and in [`submission-facts.json`](submission-facts.json).
 > No real funds, no customers, no partners.
 
@@ -98,8 +100,12 @@ EIP-712 signed observations and outcomes with replay and domain protection; exac
 stale and expiry shutdowns; volatility, loss, fee, watcher and reconciliation halts; versioned policies with
 notice; five-step exit; keeper recovery; watcher reconciliation; HyperCore signing matching the official SDK.
 
-**In development:** testnet deployment, G1 live loop, campaign, demo footage. All are blocked on testnet funding
-(see the runbook).
+**On testnet:** contracts deployed on Elysium testnet (`runs/deployment-testnet.json`); mandate 1 created as a draft
+with a fee deposit; keeper, watcher and sampler hosted on GitHub Actions, with watcher heartbeats on-chain; the
+public mandate page reads the live deployment.
+
+**In development:** G1 live loop, campaign, demo footage. All are blocked on HyperCore testnet USDC for the owner
+account (see the runbook).
 
 **Before launch:** independent security review; KMS-backed keys; separated monitoring infrastructure; design-partner
 pilot with explicit capital limits; Elysium native HyperCore integration once available and tested.
