@@ -109,3 +109,25 @@ export function approveAgentTypedData(a: ApproveAgentAction) {
 export async function signApproveAgent(account: PrivateKeyAccount, a: ApproveAgentAction): Promise<Signature> {
   return splitSig(await account.signTypedData(approveAgentTypedData(a)));
 }
+
+/** Generic user-signed action (e.g. spotSend, usdSend), signed by the account owner's master key. */
+export async function signUserAction(
+  account: PrivateKeyAccount,
+  primaryType: string,
+  fields: { name: string; type: string }[],
+  message: Record<string, unknown>,
+  signatureChainId: Hex,
+): Promise<Signature> {
+  const sig = await account.signTypedData({
+    domain: {
+      name: 'HyperliquidSignTransaction',
+      version: '1',
+      chainId: Number(BigInt(signatureChainId)),
+      verifyingContract: '0x0000000000000000000000000000000000000000',
+    },
+    types: { [primaryType]: fields },
+    primaryType,
+    message,
+  } as any);
+  return splitSig(sig);
+}
