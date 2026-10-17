@@ -1,0 +1,101 @@
+{
+  "ranAt": "2026-10-17T13:26:32.064Z",
+  "results": [
+    {
+      "step": "wallet connects through the injected provider",
+      "ok": true
+    },
+    {
+      "step": "no horizontal overflow on console at 390px",
+      "ok": true
+    },
+    {
+      "step": "invalid draft shows a field-level explanation",
+      "ok": true
+    },
+    {
+      "step": "draft persists across reload",
+      "ok": true
+    },
+    {
+      "step": "publishing navigates to the new mandate",
+      "ok": true
+    },
+    {
+      "step": "new mandate starts as DRAFT",
+      "ok": true
+    },
+    {
+      "step": "fee deposit confirmed on-chain",
+      "ok": true
+    },
+    {
+      "step": "rejected Hyperliquid approval shows an actionable error",
+      "ok": true
+    },
+    {
+      "step": "activation confirmed",
+      "ok": true
+    },
+    {
+      "step": "keeper placed the contract intents",
+      "ok": true,
+      "detail": "4 orders on the exchange double"
+    },
+    {
+      "step": "public page lists the live intents",
+      "ok": true
+    },
+    {
+      "step": "no horizontal overflow on mandate page at 390px",
+      "ok": true
+    },
+    {
+      "step": "latest on-chain decision explains the book on first load",
+      "ok": true
+    },
+    {
+      "step": "pause shows requested, not complete",
+      "ok": true
+    },
+    {
+      "step": "still pausing while the exchange has not confirmed",
+      "ok": true
+    },
+    {
+      "step": "paused only after confirmed cancellations",
+      "ok": true
+    },
+    {
+      "step": "cancel-and-revoke records step 1 and keeps the exit visibly incomplete",
+      "ok": true
+    },
+    {
+      "step": "no horizontal overflow on / at 1440px",
+      "ok": true
+    },
+    {
+      "step": "no horizontal overflow on /mandate/1 at 1440px",
+      "ok": true
+    },
+    {
+      "step": "no horizontal overflow on /proof at 1440px",
+      "ok": true
+    },
+    {
+      "step": "no horizontal overflow on /docs at 1440px",
+      "ok": true
+    },
+    {
+      "step": "skip link is the first focus stop",
+      "ok": true
+    },
+    {
+      "step": "no uncaught page errors or app console errors",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "scope": "Real contracts on a local node (anvil), real keeper against the exchange TEST DOUBLE, built web app in Chromium with an injected test wallet; Hyperliquid testnet reached from the browser for reads and the (expected-to-fail) agent approval.",
+  "command": "npx tsx web/e2e/owner-flow.ts"
+}
