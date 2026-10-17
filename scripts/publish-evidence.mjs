@@ -13,6 +13,7 @@ const fact = (id) => facts.find((f) => f.id === id);
 const offline = maybe('runs/offline-tests.json');
 const cases = j('runs/cases.json');
 const g1 = maybe('runs/g1/manifest.json');
+const e2e = maybe('runs/e2e-local.json');
 const dep = maybe('runs/deployment-testnet.json');
 const campaigns = existsSync(join(root, 'runs'))
   ? readdirSync(join(root, 'runs')).filter((d) => d.startsWith('campaign-') && existsSync(join(root, 'runs', d, 'results.json'))).map((d) => j(`runs/${d}/results.json`))
@@ -25,7 +26,14 @@ const gates = [
   { id: 'G1', title: 'One real testnet place/cancel/outcome loop independently observed', status: verified('g1-live-loop') ? 'met' : 'not-met', evidence: verified('g1-live-loop') ? 'runs/g1/manifest.json' : fact('g1-live-loop').limitation },
   { id: 'G2', title: 'Reservation, precision, access-control and idempotency tests pass', status: offlineOk ? 'met' : 'not-met', evidence: offline ? `${offline.suites.reduce((a, s) => a + s.passed, 0)} offline tests passed, 0 failed at ${offline.commit.slice(0, 10)}` : 'not run' },
   { id: 'G3', title: 'Stale-data shutdown works without fresh ticks; late fills and cancel failures reconcile', status: offlineOk ? (anyCaseOnTestnet ? 'met' : 'partial') : 'not-met', evidence: 'Shown offline with real contracts on a local node and the exchange test double; not yet observed on testnet.' },
-  { id: 'G4', title: 'Pause/revoke UI distinguishes requested and confirmed external outcomes', status: verified('g1-live-loop') ? 'partial' : 'partial', evidence: 'Implemented in the owner console (separate submitted/confirmed states, five-step exit). Not yet exercised against a live deployment.' },
+  {
+    id: 'G4',
+    title: 'Pause/revoke UI distinguishes requested and confirmed external outcomes',
+    status: 'partial',
+    evidence: e2e
+      ? `Browser end-to-end ${e2e.results.filter((r) => r.ok).length}/${e2e.results.length} on a local node with the exchange test double: PAUSING shown until cancels are confirmed, then PAUSED; exit stays visibly incomplete. Not yet exercised against the testnet deployment.`
+      : 'Implemented; not yet exercised in a browser.',
+  },
   { id: 'G5', title: 'Public evidence contains failures, unknowns, actual duration and trust limits', status: campaigns.some((c) => c.status === 'complete') ? 'met' : 'partial', evidence: campaigns.length ? 'Campaign results with interruptions and limitations published.' : 'Evidence page and limits published; no campaign has run yet.' },
   { id: 'G6', title: 'Submission facts align with what is deployed and demonstrated', status: 'partial', evidence: 'submission-facts.json maintained; README, site and submission draft generated from it. Final alignment check pending deployment.' },
 ];
