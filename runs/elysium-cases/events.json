@@ -1,0 +1,1479 @@
+{
+  "mandateId": "2",
+  "chainId": 99801,
+  "desk": "0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b",
+  "registry": "0x5accedcba9a4e5af62d0863a0d500f1179fae220",
+  "exportedAt": "2026-10-17T22:57:35.648Z",
+  "headBlock": "10738070",
+  "events": [
+    {
+      "event": "MandateCreated",
+      "block": "10736096",
+      "time": "2026-10-17T22:51:35.000Z",
+      "tx": "0xaa76cdcbf78a21d411feb3dada023f6bc7ed3c6efb11f92b60e2a3f63a26d843",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "owner": "0x7C7e3662afeA282c27bf24329D915C02d4746550",
+        "hlAccount": "0x7C7e3662afeA282c27bf24329D915C02d4746550",
+        "operator": "0xAdFf91146D916f80c9a50AaF316B87d0bd12718C",
+        "guardian": "0x1Acf1A332eEeC79A69D3C83A3E5582e5d425ACDb"
+      }
+    },
+    {
+      "event": "PolicyProposed",
+      "block": "10736096",
+      "time": "2026-10-17T22:51:35.000Z",
+      "tx": "0xaa76cdcbf78a21d411feb3dada023f6bc7ed3c6efb11f92b60e2a3f63a26d843",
+      "logIndex": 1,
+      "args": {
+        "mandateId": "2",
+        "version": 1,
+        "effectiveAt": "1792277495",
+        "riskIncreasing": false
+      }
+    },
+    {
+      "event": "FeesDeposited",
+      "block": "10736134",
+      "time": "2026-10-17T22:51:40.000Z",
+      "tx": "0xba46de3925b8aef332d986d1f6cb0a95931996d2c06d7abb8bd5487338ab131f",
+      "logIndex": 1,
+      "args": {
+        "mandateId": "2",
+        "from": "0x7C7e3662afeA282c27bf24329D915C02d4746550",
+        "amount": "50000000"
+      }
+    },
+    {
+      "event": "HaltChanged",
+      "block": "10736171",
+      "time": "2026-10-17T22:51:47.000Z",
+      "tx": "0xf4a6a9e9ffc3d9be25ea1d76149dc71920156967a900efcf735caf1ec78c8da7",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "halt": 4,
+        "reason": 11,
+        "reasonName": "WATCHER_STALE",
+        "haltName": "WATCHER"
+      }
+    },
+    {
+      "event": "StateChanged",
+      "block": "10736171",
+      "time": "2026-10-17T22:51:47.000Z",
+      "tx": "0xf4a6a9e9ffc3d9be25ea1d76149dc71920156967a900efcf735caf1ec78c8da7",
+      "logIndex": 1,
+      "args": {
+        "mandateId": "2",
+        "from": 0,
+        "to": 1,
+        "reason": 1,
+        "reasonName": "QUOTED",
+        "fromName": "DRAFT",
+        "toName": "ACTIVE"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10736224",
+      "time": "2026-10-17T22:51:56.000Z",
+      "tx": "0xeec9d703a3561b3b2546422655bff7a34230b465e53d3006a9bd5475df90def6",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "1",
+        "policyVersion": 1,
+        "reason": 11,
+        "midE8": "455685000",
+        "reservationE8": "0",
+        "skewBps": 0,
+        "refAgeMs": 1554,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "WATCHER_STALE"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10736238",
+      "time": "2026-10-17T22:51:59.000Z",
+      "tx": "0xaf1323b90d6b000ecaf88d65aaa91a37b7c8d1fa904bf7d117a89a8b76e53135",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "2",
+        "policyVersion": 1,
+        "reason": 11,
+        "midE8": "455685000",
+        "reservationE8": "0",
+        "skewBps": 0,
+        "refAgeMs": 841,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "WATCHER_STALE"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10736263",
+      "time": "2026-10-17T22:52:04.000Z",
+      "tx": "0x8cb2b473161d692726a143cd33f447f72d35dcb6c41b87c5626eb66486c177e3",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "3",
+        "policyVersion": 1,
+        "reason": 11,
+        "midE8": "455685000",
+        "reservationE8": "0",
+        "skewBps": 0,
+        "refAgeMs": 864,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "WATCHER_STALE"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10736294",
+      "time": "2026-10-17T22:52:09.000Z",
+      "tx": "0x88366a87269ec9f9d176713ee425cd53d05c8df62f1ed2a59be27cb0280ef7be",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "4",
+        "policyVersion": 1,
+        "reason": 11,
+        "midE8": "455685000",
+        "reservationE8": "0",
+        "skewBps": 0,
+        "refAgeMs": 1001,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "WATCHER_STALE"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10736314",
+      "time": "2026-10-17T22:52:15.000Z",
+      "tx": "0x891ca1edd71f27e797642ce7cd49d8fe91761ee9f410823c5bbb2e2849bed49e",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "5",
+        "policyVersion": 1,
+        "reason": 11,
+        "midE8": "455685000",
+        "reservationE8": "0",
+        "skewBps": 0,
+        "refAgeMs": 1263,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "WATCHER_STALE"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10736336",
+      "time": "2026-10-17T22:52:20.000Z",
+      "tx": "0x86cc2f5a2827390c600168a032d33a48f2db8b11452f301094f9534d78c141fa",
+      "logIndex": 3,
+      "args": {
+        "mandateId": "2",
+        "seq": "6",
+        "policyVersion": 1,
+        "reason": 11,
+        "midE8": "455685000",
+        "reservationE8": "0",
+        "skewBps": 0,
+        "refAgeMs": 1654,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "WATCHER_STALE"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10736357",
+      "time": "2026-10-17T22:52:24.000Z",
+      "tx": "0x4aee4196234ca8860262260a25687bd2844e1a6a83bd1dbccf654497f739ade7",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "7",
+        "policyVersion": 1,
+        "reason": 11,
+        "midE8": "455685000",
+        "reservationE8": "0",
+        "skewBps": 0,
+        "refAgeMs": 949,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "WATCHER_STALE"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10736383",
+      "time": "2026-10-17T22:52:31.000Z",
+      "tx": "0xe1ece4188028d985cf060df27367c1f92c64ea08a70f888d9b095dbc9991a3e6",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "8",
+        "policyVersion": 1,
+        "reason": 11,
+        "midE8": "455685000",
+        "reservationE8": "0",
+        "skewBps": 0,
+        "refAgeMs": 2270,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "WATCHER_STALE"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10736396",
+      "time": "2026-10-17T22:52:34.000Z",
+      "tx": "0x52236535742922ab16520ee29fa805914008dce52635a845153c3ff1f84881ba",
+      "logIndex": 1,
+      "args": {
+        "mandateId": "2",
+        "seq": "9",
+        "policyVersion": 1,
+        "reason": 11,
+        "midE8": "455685000",
+        "reservationE8": "0",
+        "skewBps": 0,
+        "refAgeMs": 470,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "WATCHER_STALE"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10736425",
+      "time": "2026-10-17T22:52:39.000Z",
+      "tx": "0xb67ed7aa36657d69014d703c926428fcda41696126666adcea3c3fe8b9a8bd61",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "10",
+        "policyVersion": 1,
+        "reason": 11,
+        "midE8": "455685000",
+        "reservationE8": "0",
+        "skewBps": 0,
+        "refAgeMs": 547,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "WATCHER_STALE"
+      }
+    },
+    {
+      "event": "Heartbeat",
+      "block": "10736440",
+      "time": "2026-10-17T22:52:43.000Z",
+      "tx": "0xb000be9d8fbfadf0d89c8b1dd4ee2ddacec73824fb7249eb464348b5bf2bf3d0",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "guardian": "0x1Acf1A332eEeC79A69D3C83A3E5582e5d425ACDb"
+      }
+    },
+    {
+      "event": "HaltChanged",
+      "block": "10736454",
+      "time": "2026-10-17T22:52:44.000Z",
+      "tx": "0xec52374cb3733cc44c9c439e080daebc27aa1cc9b2920f579d94daa700197341",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "halt": 0,
+        "reason": 1,
+        "reasonName": "QUOTED",
+        "haltName": "NONE"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10736454",
+      "time": "2026-10-17T22:52:44.000Z",
+      "tx": "0xec52374cb3733cc44c9c439e080daebc27aa1cc9b2920f579d94daa700197341",
+      "logIndex": 1,
+      "args": {
+        "mandateId": "2",
+        "seq": "11",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 886,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10736480",
+      "time": "2026-10-17T22:52:50.000Z",
+      "tx": "0x6f5132828ed637ad82e58b652cac0b3f2d2e22b2664d4e01f7250f8aa160de19",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "12",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 1580,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Heartbeat",
+      "block": "10736488",
+      "time": "2026-10-17T22:52:51.000Z",
+      "tx": "0x9d03de54434323731bb63af713b8fe638abc5ef443d6216c65416250b1265013",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "guardian": "0x1Acf1A332eEeC79A69D3C83A3E5582e5d425ACDb"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10736515",
+      "time": "2026-10-17T22:52:55.000Z",
+      "tx": "0xcaa97777a5dab191287a15b379eec2b0b4bf6cddb3b177b6e7a36fe604f19856",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "13",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 1846,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10736540",
+      "time": "2026-10-17T22:53:00.000Z",
+      "tx": "0x608a260f5f403292f18c6f5b5606a8446a2201bdab8ea0236a8f29660e3ff1c5",
+      "logIndex": 9,
+      "args": {
+        "mandateId": "2",
+        "seq": "14",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 1660,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Heartbeat",
+      "block": "10736545",
+      "time": "2026-10-17T22:53:01.000Z",
+      "tx": "0x3622aa68a46ea23a2a72091f76f5031a60c0994a5386d4e6ef4ee3dd8177d651",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "guardian": "0x1Acf1A332eEeC79A69D3C83A3E5582e5d425ACDb"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10736568",
+      "time": "2026-10-17T22:53:05.000Z",
+      "tx": "0x21ca877b63c777140583032d33f16c927a87b51d81c57e9236cbb0fd7f712f95",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "15",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 1882,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10736601",
+      "time": "2026-10-17T22:53:10.000Z",
+      "tx": "0x8e047fe975ef95dd316bc6fe1dc1d0df576dbf47ff17614ede6d1169b7a37319",
+      "logIndex": 1,
+      "args": {
+        "mandateId": "2",
+        "seq": "16",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 1495,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Heartbeat",
+      "block": "10736608",
+      "time": "2026-10-17T22:53:11.000Z",
+      "tx": "0x43b4f65a7762b805e132945253df893e9405f93598b7230e45dcb8ff28899277",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "guardian": "0x1Acf1A332eEeC79A69D3C83A3E5582e5d425ACDb"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10736627",
+      "time": "2026-10-17T22:53:14.000Z",
+      "tx": "0x041e359f4a9a8956c4a5f2894f2b980123bb6ba26fb91283b493412ca183f6f0",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "17",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 736,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10736656",
+      "time": "2026-10-17T22:53:20.000Z",
+      "tx": "0xf313b828f9ef889327f5107dbaab92e3ba4cf385ad534cf794b7df4245d0e2be",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "18",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 1653,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Heartbeat",
+      "block": "10736661",
+      "time": "2026-10-17T22:53:21.000Z",
+      "tx": "0x1ec5921147a13d9a2e8f7c3dbcda4832ead6b9ca3dd33e88cc70be97784d0833",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "guardian": "0x1Acf1A332eEeC79A69D3C83A3E5582e5d425ACDb"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10736693",
+      "time": "2026-10-17T22:53:25.000Z",
+      "tx": "0xd649ff1ed1837f4a295e1bf42aedc2a0662fa810bab1930bce5da2b76732da57",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "19",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 1319,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10736720",
+      "time": "2026-10-17T22:53:29.000Z",
+      "tx": "0xac3b37d7d6a43680f9c423affc8ec35f94258532927b7eaa6f59734ed8844326",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "20",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 506,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Heartbeat",
+      "block": "10736725",
+      "time": "2026-10-17T22:53:31.000Z",
+      "tx": "0xb89b82d63f72862377082c7014ccc13cb1aed6b929c3ddbf6ec7ba8534d0d73e",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "guardian": "0x1Acf1A332eEeC79A69D3C83A3E5582e5d425ACDb"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10736750",
+      "time": "2026-10-17T22:53:35.000Z",
+      "tx": "0x00c10351a81937ea9acf8fe448144bc14c0338d88a82f457e37aa22293f8046d",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "21",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 1736,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10736788",
+      "time": "2026-10-17T22:53:39.000Z",
+      "tx": "0x6bbeb8c7e1b3f70e9774597ea585a5c3752ffdc2482066c7f0c8f824d1e01cf3",
+      "logIndex": 1,
+      "args": {
+        "mandateId": "2",
+        "seq": "22",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 508,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Heartbeat",
+      "block": "10736795",
+      "time": "2026-10-17T22:53:41.000Z",
+      "tx": "0x442f55eedc7bdce1b815886f39a1202e3dc33d230afde0fb294bd3b61dd44fa9",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "guardian": "0x1Acf1A332eEeC79A69D3C83A3E5582e5d425ACDb"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10736815",
+      "time": "2026-10-17T22:53:45.000Z",
+      "tx": "0x4587de8c77ea050f9c7d66a67b87ed7e06448a2c32398568c318de3cbdbdb4fd",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "23",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 1232,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10736840",
+      "time": "2026-10-17T22:53:50.000Z",
+      "tx": "0x2d14f8703f0ffc949ff55fa6e45090fd1ede79ba76a2f101e46dfa3518afdaad",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "24",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 1422,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Heartbeat",
+      "block": "10736845",
+      "time": "2026-10-17T22:53:51.000Z",
+      "tx": "0x9333709ffa0518713878687fcb70ea2654785cb3cfd3236f182c2ce1dd3126b3",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "guardian": "0x1Acf1A332eEeC79A69D3C83A3E5582e5d425ACDb"
+      }
+    },
+    {
+      "event": "Heartbeat",
+      "block": "10736903",
+      "time": "2026-10-17T22:54:00.000Z",
+      "tx": "0xc0d2d1a91b77450dd41904c051ae3df9b6a9debcb6b48e7441579b7b71eec204",
+      "logIndex": 1,
+      "args": {
+        "mandateId": "2",
+        "guardian": "0x1Acf1A332eEeC79A69D3C83A3E5582e5d425ACDb"
+      }
+    },
+    {
+      "event": "HaltChanged",
+      "block": "10736939",
+      "time": "2026-10-17T22:54:08.000Z",
+      "tx": "0x6efa3b09ae8fdefcd6ccccc9a36ab9f8949a2629b730ab0b1b5ebfb5ae2a1243",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "halt": 1,
+        "reason": 4,
+        "reasonName": "STALE_REFERENCE",
+        "haltName": "STALE"
+      }
+    },
+    {
+      "event": "Heartbeat",
+      "block": "10736958",
+      "time": "2026-10-17T22:54:11.000Z",
+      "tx": "0x4a0b1c3a8f5c6255949ce679e25bc56a45dc718e2a92c7ac1155e1b723f07f59",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "guardian": "0x1Acf1A332eEeC79A69D3C83A3E5582e5d425ACDb"
+      }
+    },
+    {
+      "event": "Heartbeat",
+      "block": "10737017",
+      "time": "2026-10-17T22:54:21.000Z",
+      "tx": "0x0ef641f0202f92a6e0587cbb87b1f7412b3ef12bdac8e5bae178856acf5cdf96",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "guardian": "0x1Acf1A332eEeC79A69D3C83A3E5582e5d425ACDb"
+      }
+    },
+    {
+      "event": "Heartbeat",
+      "block": "10737064",
+      "time": "2026-10-17T22:54:31.000Z",
+      "tx": "0x822d8e09d418e3e25d026a9f7e2d0e4a90b5dc3ec86c86bcb7865aa3be5e8222",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "guardian": "0x1Acf1A332eEeC79A69D3C83A3E5582e5d425ACDb"
+      }
+    },
+    {
+      "event": "Heartbeat",
+      "block": "10737115",
+      "time": "2026-10-17T22:54:40.000Z",
+      "tx": "0x908fa060561500175abb2c1de7de072695274596f83cd53c660a4c32bf46b184",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "guardian": "0x1Acf1A332eEeC79A69D3C83A3E5582e5d425ACDb"
+      }
+    },
+    {
+      "event": "Heartbeat",
+      "block": "10737158",
+      "time": "2026-10-17T22:54:51.000Z",
+      "tx": "0xa6b883e86f070a1474bcf90c1edcbfc1dbc04c9ad3ded9b669f9fb7a7324a702",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "guardian": "0x1Acf1A332eEeC79A69D3C83A3E5582e5d425ACDb"
+      }
+    },
+    {
+      "event": "HaltChanged",
+      "block": "10737212",
+      "time": "2026-10-17T22:54:58.000Z",
+      "tx": "0x8b1f4bd36fd629ab225e081ac423d18d3220c3bc60e1d11fbf090e4d02e6fa14",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "halt": 0,
+        "reason": 1,
+        "reasonName": "QUOTED",
+        "haltName": "NONE"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10737212",
+      "time": "2026-10-17T22:54:58.000Z",
+      "tx": "0x8b1f4bd36fd629ab225e081ac423d18d3220c3bc60e1d11fbf090e4d02e6fa14",
+      "logIndex": 1,
+      "args": {
+        "mandateId": "2",
+        "seq": "25",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 1457,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Heartbeat",
+      "block": "10737223",
+      "time": "2026-10-17T22:55:01.000Z",
+      "tx": "0x8b94a972faed7c5ffbb145b78c6d78046ee708f404bff1a6f19b1166f4348b86",
+      "logIndex": 3,
+      "args": {
+        "mandateId": "2",
+        "guardian": "0x1Acf1A332eEeC79A69D3C83A3E5582e5d425ACDb"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10737227",
+      "time": "2026-10-17T22:55:01.000Z",
+      "tx": "0xc788ca32122b9487ea5088c3f463625ac6f0376de4cf36e582223c293822a635",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "26",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 1236,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10737267",
+      "time": "2026-10-17T22:55:06.000Z",
+      "tx": "0x55cae185e06490056abceca5a83ab914779af5920f9eedde4d7533702cb6be92",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "27",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 1067,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Heartbeat",
+      "block": "10737287",
+      "time": "2026-10-17T22:55:11.000Z",
+      "tx": "0x0605ac33a8996b5416e19dcf68e9e4b5d89f8df9bf9349008f7af2da28f32ef5",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "guardian": "0x1Acf1A332eEeC79A69D3C83A3E5582e5d425ACDb"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10737289",
+      "time": "2026-10-17T22:55:11.000Z",
+      "tx": "0xcd8af9c049e0bbde2da5d60ec0bd7f5c0a02ebf2d382dd134cbfb30ff617fe63",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "28",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 853,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10737319",
+      "time": "2026-10-17T22:55:16.000Z",
+      "tx": "0x14abec04c2ab116f9fcff45021dddc46c49b751846a1a0813cb1fe8e27d6de08",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "29",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 728,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Heartbeat",
+      "block": "10737357",
+      "time": "2026-10-17T22:55:21.000Z",
+      "tx": "0x6ff1a269122844718ca7356a79190874e835f3670513d83b539979b5b788e87b",
+      "logIndex": 3,
+      "args": {
+        "mandateId": "2",
+        "guardian": "0x1Acf1A332eEeC79A69D3C83A3E5582e5d425ACDb"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10737359",
+      "time": "2026-10-17T22:55:22.000Z",
+      "tx": "0x647d7444686a6c9ef5de82b1ea4133288467cc086022c71cb0c596722b6f2f1b",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "30",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 1869,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10737385",
+      "time": "2026-10-17T22:55:26.000Z",
+      "tx": "0x12359c140e572f2f1bf23174f09110c3f540232be560100d356b1a7748d4bfe0",
+      "logIndex": 1,
+      "args": {
+        "mandateId": "2",
+        "seq": "31",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 1147,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Heartbeat",
+      "block": "10737411",
+      "time": "2026-10-17T22:55:30.000Z",
+      "tx": "0xa6c936a8a9485d9733a38497908ed24174bfb328fa1ab6de16187e75863f5109",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "guardian": "0x1Acf1A332eEeC79A69D3C83A3E5582e5d425ACDb"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10737423",
+      "time": "2026-10-17T22:55:32.000Z",
+      "tx": "0x6862a421de1848496ff8490b15ab6adc5a01221f8c9e0fe9d7fc122eb9620467",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "32",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 1672,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10737457",
+      "time": "2026-10-17T22:55:36.000Z",
+      "tx": "0x05dfdb4468e22df7577d9cfc137302b0c597cf6688e72b5ac77833c9fadc7b13",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "33",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 903,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Heartbeat",
+      "block": "10737482",
+      "time": "2026-10-17T22:55:41.000Z",
+      "tx": "0x222f918006481888927c885819663571a15365611cbc384c04a2f9b3a409d4d5",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "guardian": "0x1Acf1A332eEeC79A69D3C83A3E5582e5d425ACDb"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10737485",
+      "time": "2026-10-17T22:55:41.000Z",
+      "tx": "0x8122bebdc731fc71204f8bb9490de846e74833259d3d021fadba587fbcd03443",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "34",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 686,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10737504",
+      "time": "2026-10-17T22:55:46.000Z",
+      "tx": "0x0ded8ca33ff9960ae5a89e4c53cf054e9ef0d8ef36d8258f7f02dd560062aa3b",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "35",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 718,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Heartbeat",
+      "block": "10737527",
+      "time": "2026-10-17T22:55:51.000Z",
+      "tx": "0x38dfe127a87b7f5c6772664bb530ae6c0ff4f1372c2e0c66f2b00509dec48250",
+      "logIndex": 1,
+      "args": {
+        "mandateId": "2",
+        "guardian": "0x1Acf1A332eEeC79A69D3C83A3E5582e5d425ACDb"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10737535",
+      "time": "2026-10-17T22:55:52.000Z",
+      "tx": "0xdcb06cb3a9646b6d61e300c599c4438cf519d965c1f28565aae001af099c091a",
+      "logIndex": 1,
+      "args": {
+        "mandateId": "2",
+        "seq": "36",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 1398,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10737568",
+      "time": "2026-10-17T22:55:56.000Z",
+      "tx": "0xb587df6bec2d52dfee6861f4d8cec6f3bb8d0726c86edcc4749b8a95701ccdd6",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "37",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 692,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10737601",
+      "time": "2026-10-17T22:56:01.000Z",
+      "tx": "0x0ca1e3b156b34b39d7f16f1976f1cf30eb08c1a9f2d4286803f0b363731d2875",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "38",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 1447,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10737639",
+      "time": "2026-10-17T22:56:07.000Z",
+      "tx": "0xb6d1bda98eeb39040bf51247fbf1c48503b5bd457fcae4d85955d1b00b7a22cd",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "39",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 1904,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10737667",
+      "time": "2026-10-17T22:56:11.000Z",
+      "tx": "0xaa17d5a751d089582aca71af3c18a7e30971cff8605fa9ba28b9e53dc87fd24b",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "40",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 682,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10737692",
+      "time": "2026-10-17T22:56:16.000Z",
+      "tx": "0xac6cbbf8acdd2dd5244d75d700e1ea4b7f940a778126d75a669ba417a27a87c3",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "41",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 868,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10737737",
+      "time": "2026-10-17T22:56:21.000Z",
+      "tx": "0x5207e5e201c98047bc7df1becab17ad95f22f3736cd252f2dc3dfeb7b3036cbe",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "42",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 602,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10737766",
+      "time": "2026-10-17T22:56:26.000Z",
+      "tx": "0x8dd8e39bd8163f095402cf59ad0e55804ab238554acbb5ea4741f54df72e5ce4",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "43",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 786,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10737793",
+      "time": "2026-10-17T22:56:31.000Z",
+      "tx": "0x36e4df69ebd46e6cb642211a81577e381f264c3f6f71dc2a2266266cd3731ecd",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "44",
+        "policyVersion": 1,
+        "reason": 1,
+        "midE8": "455685000",
+        "reservationE8": "457052055",
+        "skewBps": -30,
+        "refAgeMs": 917,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "QUOTED"
+      }
+    },
+    {
+      "event": "HaltChanged",
+      "block": "10737823",
+      "time": "2026-10-17T22:56:37.000Z",
+      "tx": "0x6fc648bea982579783723744e98192264f456078ea9694081030aa45b095be2f",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "halt": 4,
+        "reason": 11,
+        "reasonName": "WATCHER_STALE",
+        "haltName": "WATCHER"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10737823",
+      "time": "2026-10-17T22:56:37.000Z",
+      "tx": "0x6fc648bea982579783723744e98192264f456078ea9694081030aa45b095be2f",
+      "logIndex": 1,
+      "args": {
+        "mandateId": "2",
+        "seq": "45",
+        "policyVersion": 1,
+        "reason": 11,
+        "midE8": "455685000",
+        "reservationE8": "0",
+        "skewBps": 0,
+        "refAgeMs": 2155,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "WATCHER_STALE"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10737851",
+      "time": "2026-10-17T22:56:41.000Z",
+      "tx": "0xa7753fdc07c8fd9de4feb4ac84f6385e043175841307af9343d627e41588e5af",
+      "logIndex": 3,
+      "args": {
+        "mandateId": "2",
+        "seq": "46",
+        "policyVersion": 1,
+        "reason": 11,
+        "midE8": "455685000",
+        "reservationE8": "0",
+        "skewBps": 0,
+        "refAgeMs": 977,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "WATCHER_STALE"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10737884",
+      "time": "2026-10-17T22:56:46.000Z",
+      "tx": "0x3281d11caa1915f25814105243686e8d1fb306ebdd5132bd55da9029568a052d",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "47",
+        "policyVersion": 1,
+        "reason": 11,
+        "midE8": "455685000",
+        "reservationE8": "0",
+        "skewBps": 0,
+        "refAgeMs": 943,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "WATCHER_STALE"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10737912",
+      "time": "2026-10-17T22:56:51.000Z",
+      "tx": "0x3cffdb0607cc78a5473cdcd0b69462f7dc1eea29b8e497f20c1e37537e827770",
+      "logIndex": 1,
+      "args": {
+        "mandateId": "2",
+        "seq": "48",
+        "policyVersion": 1,
+        "reason": 11,
+        "midE8": "455685000",
+        "reservationE8": "0",
+        "skewBps": 0,
+        "refAgeMs": 618,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "WATCHER_STALE"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10737936",
+      "time": "2026-10-17T22:56:56.000Z",
+      "tx": "0xc190b2eb8cff64793470793e741a552bd4f46293789e81f0d42c7d14825efcc5",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "49",
+        "policyVersion": 1,
+        "reason": 11,
+        "midE8": "455685000",
+        "reservationE8": "0",
+        "skewBps": 0,
+        "refAgeMs": 802,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "WATCHER_STALE"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10737964",
+      "time": "2026-10-17T22:57:02.000Z",
+      "tx": "0x7d1b60dab3cf7f6e09b2eedeacef7968a5068b215a5de59c51b8e0d77ac50881",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "50",
+        "policyVersion": 1,
+        "reason": 11,
+        "midE8": "455685000",
+        "reservationE8": "0",
+        "skewBps": 0,
+        "refAgeMs": 2142,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "WATCHER_STALE"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10738003",
+      "time": "2026-10-17T22:57:07.000Z",
+      "tx": "0xb834dcf8c685a2aa8e48a5ba4f39a908ab70015a959d39167efa3db7609f8e37",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "51",
+        "policyVersion": 1,
+        "reason": 11,
+        "midE8": "455685000",
+        "reservationE8": "0",
+        "skewBps": 0,
+        "refAgeMs": 1816,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "WATCHER_STALE"
+      }
+    },
+    {
+      "event": "Decision",
+      "block": "10738029",
+      "time": "2026-10-17T22:57:11.000Z",
+      "tx": "0x8818b0dee30514678f8e1775cb7ee55351288b4496325470c697665e44df5341",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "seq": "52",
+        "policyVersion": 1,
+        "reason": 11,
+        "midE8": "455685000",
+        "reservationE8": "0",
+        "skewBps": 0,
+        "refAgeMs": 542,
+        "inventoryE8": "0",
+        "placed": 0,
+        "cancelled": 0,
+        "reasonName": "WATCHER_STALE"
+      }
+    },
+    {
+      "event": "StateChanged",
+      "block": "10738048",
+      "time": "2026-10-17T22:57:15.000Z",
+      "tx": "0x25e498d03824990ad6a4f0fb0f0030b7e38fe093dcc2bef7571c93b6489083fd",
+      "logIndex": 0,
+      "args": {
+        "mandateId": "2",
+        "from": 1,
+        "to": 2,
+        "reason": 13,
+        "reasonName": "OWNER_PAUSE",
+        "fromName": "ACTIVE",
+        "toName": "PAUSING"
+      }
+    },
+    {
+      "event": "StateChanged",
+      "block": "10738048",
+      "time": "2026-10-17T22:57:15.000Z",
+      "tx": "0x25e498d03824990ad6a4f0fb0f0030b7e38fe093dcc2bef7571c93b6489083fd",
+      "logIndex": 1,
+      "args": {
+        "mandateId": "2",
+        "from": 2,
+        "to": 3,
+        "reason": 13,
+        "reasonName": "OWNER_PAUSE",
+        "fromName": "PAUSING",
+        "toName": "PAUSED"
+      }
+    }
+  ]
+}
