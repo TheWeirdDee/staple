@@ -11,13 +11,20 @@
     {
       "id": "contracts-deployed",
       "claim": "MandateRegistry, StapleDesk and libraries are deployed on Elysium testnet (chain 99801)",
-      "status": "planned",
-      "evidence": "runs/deployment-testnet.json",
-      "limitation": "Waiting on testnet gas for the deployer address."
+      "status": "testnet-verified",
+      "evidence": "runs/deployment-testnet.json (registry 0x5accedcba9a4e5af62d0863a0d500f1179fae220, desk 0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b, block 10723281), runs/ops-log.jsonl",
+      "limitation": "Deployed and mandate 1 created with a fee deposit. Mandate 1 stays a draft (not quoting) until the owner account holds HyperCore testnet funds."
+    },
+    {
+      "id": "hosted-services",
+      "claim": "Keeper, watcher and sampler run on GitHub Actions; the watcher sends on-chain heartbeats for mandate 1 from the hosted runner",
+      "status": "testnet-verified",
+      "evidence": "Workflow run https://github.com/TheWeirdDee/staple/actions/runs/39075096371; heartbeat tx 0xa17f9e4e471c0fbdd9185a1e082dcbd2f8565bfa0fdff49cf634826c8befa795 (Elysium testnet block 10729938)",
+      "limitation": "Elysium side only. The keeper idles because mandate 1 is a draft, and heartbeats are every 120 s to conserve testnet gas. Runs hand over every ~5h40m with a short gap."
     },
     {
       "id": "g1-live-loop",
-      "claim": "Elysium intent → real HyperCore testnet order → independent observation → confirmed cancellation → reconciled outcome",
+      "claim": "Elysium intent \u2192 real HyperCore testnet order \u2192 independent observation \u2192 confirmed cancellation \u2192 reconciled outcome",
       "status": "planned",
       "evidence": "runs/g1/manifest.json",
       "limitation": "Waiting on testnet USDC in the dedicated owner account."
@@ -90,7 +97,7 @@
       "claim": "Public mandate page separates intended, observed and unconfirmed orders, shows inventory, reservations, PnL/fees, thresholds, watcher health, residual risk and history from on-chain decisions",
       "status": "implemented-unverified",
       "evidence": "web/src/pages/Mandate.tsx",
-      "limitation": "Not yet exercised against a live deployment."
+      "limitation": "Reads the live testnet deployment (mandate 1, draft) in a browser. Owner flows are verified only against a local node; not yet exercised against the testnet deployment."
     },
     {
       "id": "campaign",
