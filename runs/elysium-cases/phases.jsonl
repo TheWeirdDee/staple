@@ -1,0 +1,8 @@
+{"t":1792277492557,"phase":"create","note":"test mandate with a 6 h expiry; the featured mandate is unchanged"}
+{"t":1792277505045,"phase":"activate","note":"owner activates; the desk must stay halted until the independent watcher checks in"}
+{"t":1792277556570,"phase":"watcher-alive","note":"watcher starts heartbeating; the keeper keeps ticking"}
+{"t":1792277631575,"phase":"keeper-down","note":"keeper stopped: no new ticks; the watcher's poke must halt quoting once the reference is stale"}
+{"t":1792277693582,"phase":"keeper-up","note":"keeper restarts and reconciles before any new decision"}
+{"t":1792277753587,"phase":"watcher-down","note":"watcher stopped: the keeper's next ticks must fail closed once the 45 s watcher timeout passes"}
+{"t":1792277830596,"phase":"pause","note":"owner pauses"}
+{"t":1792277839356,"phase":"export","note":"on-chain record exported"}
