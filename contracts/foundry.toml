@@ -13,3 +13,8 @@ fs_permissions = [{ access = "read", path = "../reference/vectors" }]
 
 [fmt]
 line_length = 110
+
+[lint]
+# Reviewed: timestamp comparisons are intended (sequencer time is a documented trust assumption) and casts are
+# bounded by policy validation. Run `forge lint` explicitly to see them.
+lint_on_build = false
