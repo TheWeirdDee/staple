@@ -7,7 +7,7 @@
  *   npx tsx web/e2e/owner-flow.ts
  */
 import { spawn } from 'node:child_process';
-import { existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { chromium, type Page } from '@playwright/test';
 import { createPublicClient, createTestClient, createWalletClient, defineChain, http, type Hex } from 'viem';
@@ -26,6 +26,9 @@ const PORT = 18999;
 const WEB = 5199;
 const RPC = `http://127.0.0.1:${PORT}`;
 const depFile = join(ROOT, 'web', 'public', 'deployment.json');
+// The real deployment record is set aside while the test serves a local one, and always put back afterwards.
+const realDep = existsSync(depFile) ? readFileSync(depFile) : undefined;
+const restoreDep = () => (realDep ? writeFileSync(depFile, realDep) : rmSync(depFile, { force: true }));
 const results: { step: string; ok: boolean; detail?: string }[] = [];
 const check = (step: string, ok: boolean, detail?: string) => {
   results.push({ step, ok, detail });
@@ -42,7 +45,6 @@ async function waitFor(fn: () => Promise<boolean>, ms = 30_000, every = 300) {
 }
 
 async function main() {
-  if (existsSync(depFile)) throw new Error('web/public/deployment.json exists; refusing to overwrite a real deployment record');
   mkdirSync(OUT, { recursive: true });
   const node = spawn('anvil', ['--port', String(PORT), '--silent', '--code-size-limit', '24576'], { stdio: 'ignore' });
   const chain = defineChain({ id: 31337, name: 'anvil', nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 }, rpcUrls: { default: { http: [RPC] } } });
@@ -112,7 +114,7 @@ async function main() {
     await browser.close();
     web.kill();
     node.kill();
-    rmSync(depFile, { force: true });
+    restoreDep();
   }
   check('no uncaught page errors or app console errors', errors.length === 0, errors.slice(0, 3).join(' | '));
   writeFileSync(join(OUT, 'results.json'), JSON.stringify({ ranAt: new Date().toISOString(), results }, null, 2));
@@ -224,6 +226,6 @@ async function readOnlyChecks(page: Page, base: string, width: number) {
 
 main().catch((e) => {
   console.error(e);
-  rmSync(depFile, { force: true });
+  restoreDep();
   process.exit(1);
 });
