@@ -1,0 +1,13 @@
+[
+  {"id": "activation", "name": "Live activation: intent, accepted order and independent observation match", "status": "not-run", "evidence": "Waiting on testnet funding (G1)."},
+  {"id": "fill", "name": "Normal fill updates inventory, reservation and fees exactly once", "status": "offline-tested", "evidence": "keeper/test/integration.test.ts (fill + duplicate delivery); contracts test_partialFillDuringCancelAndLateFillExactlyOnce"},
+  {"id": "healthy", "name": "Healthy book: configured stay-out / join rule", "status": "offline-tested", "evidence": "contracts test_healthyBookStayOutCancelsAndDoesNotQuote, test_healthyBookJoinNeverImproves; quote vectors"},
+  {"id": "stale", "name": "Stale feed: independent watchdog attempts cancel without new ticks", "status": "offline-tested", "evidence": "contracts test_staleShutdownWithoutAnyNewTick; keeper outage integration test"},
+  {"id": "volatility", "name": "Volatility trigger, cancellation and resume conditions", "status": "offline-tested", "evidence": "contracts test_volatilityPullsQuotesAndResumesAfterCalm"},
+  {"id": "loss", "name": "Loss trigger: shutdown, overshoot and residual inventory disclosed", "status": "offline-tested", "evidence": "contracts test_lossTriggerTripsAndReportsOvershoot"},
+  {"id": "delayed-cancel", "name": "Delayed cancel / partial fill: reservations stay conservative, late fills reconcile", "status": "offline-tested", "evidence": "keeper integration (delayed cancel + partial fill, rejected cancel retry); contracts test_cancelRequestKeepsReservationUntilConfirmed"},
+  {"id": "replay", "name": "Replay / out-of-order outcomes: no duplicated accounting or fees", "status": "offline-tested", "evidence": "contracts test_observationReplayRejected, test_outcomeBatchReplayRejected, test_fillBeforeAckOutOfOrder, duplicate fill check"},
+  {"id": "outage", "name": "Keeper outage / restart: no new exposure before reconciliation", "status": "offline-tested", "evidence": "keeper integration: restart recovery, keeper outage with exchange-side scheduled cancel"},
+  {"id": "mismatch", "name": "Mismatched order: watcher detects, alerts and blocks new exposure", "status": "offline-tested", "evidence": "watcher/tests/test_watcher.py; contracts test_watcherMismatchStopsNewExposure, test_overfillIsExecutionMismatch"},
+  {"id": "exit", "name": "Owner exit: revocation and remaining-order checks confirmed separately", "status": "offline-tested", "evidence": "contracts test_cancelAllAndRevokeFlow, test_revocationObservedBeforeOrdersGoneStaysRevoking"}
+]
