@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-17T12:56:07.395Z",
-  "commit": "e78901c636b262dd35c7cd6b8e6b15c6d6c8048b",
+  "generatedAt": "2026-10-17T13:13:17.402Z",
+  "commit": "09220f1a63c818abe3a90fb0f49fea8c75ccca98",
   "network": "Hyperliquid testnet + Elysium testnet (not yet deployed)",
   "market": "PURR/USDC spot",
   "gates": [
@@ -14,7 +14,7 @@
       "id": "G2",
       "title": "Reservation, precision, access-control and idempotency tests pass",
       "status": "met",
-      "evidence": "95 offline tests passed, 0 failed at 2129c54830"
+      "evidence": "95 offline tests passed, 0 failed at 9ff9aac9be"
     },
     {
       "id": "G3",
