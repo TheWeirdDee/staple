@@ -23,8 +23,15 @@
       "limitation": "Elysium side only. The keeper idles because mandate 1 is a draft, and heartbeats are every 120 s to conserve testnet gas. Runs hand over every ~5h40m with a short gap."
     },
     {
+      "id": "elysium-safety-paths",
+      "claim": "On Elysium testnet: activation fails closed until the watcher checks in; a keeper outage is halted by the watcher's timer-driven poke with no new tick; a watcher outage halts quoting after its 45 s timeout; quoting resumes only on a fresh observation; owner pause is immediate when nothing rests",
+      "status": "testnet-verified",
+      "evidence": "runs/elysium-cases/ (events.json exported from desk 0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b, test mandate 2; phases.jsonl; keeper and watcher logs); scripts/elysium-cases.sh",
+      "limitation": "Elysium side only. The test mandate's HyperCore account is unfunded, so no order was placed and no cancellation, fill or exchange-side scheduled cancel was exercised. The keeper and watcher ran on one host for this run."
+    },
+    {
       "id": "g1-live-loop",
-      "claim": "Elysium intent \u2192 real HyperCore testnet order \u2192 independent observation \u2192 confirmed cancellation \u2192 reconciled outcome",
+      "claim": "Elysium intent → real HyperCore testnet order → independent observation → confirmed cancellation → reconciled outcome",
       "status": "planned",
       "evidence": "runs/g1/manifest.json",
       "limitation": "Waiting on testnet USDC in the dedicated owner account."
@@ -54,7 +61,7 @@
       "id": "stale-without-ticks",
       "claim": "Stale-data and expiry shutdowns are initiated by a timer (permissionless poke called by the watcher) even when no observation arrives",
       "status": "implemented-unverified",
-      "evidence": "contracts/test/StapleDesk.t.sol test_staleShutdownWithoutAnyNewTick, test_expiryWithoutTick; keeper/test/integration.test.ts keeper outage",
+      "evidence": "contracts/test/StapleDesk.t.sol test_staleShutdownWithoutAnyNewTick, test_expiryWithoutTick; keeper/test/integration.test.ts keeper outage; Elysium testnet: runs/elysium-cases (watcher poke tx 0x6efa3b09ae8fdefcd6ccccc9a36ab9f8949a2629b730ab0b1b5ebfb5ae2a1243)",
       "limitation": "Requires the watcher (or anyone) to send the poke transaction; the exchange-side scheduled cancel is the second line."
     },
     {
