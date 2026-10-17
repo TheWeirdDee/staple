@@ -1,0 +1,15 @@
+{
+  "coin": "PURR/USDC",
+  "asset": 10000,
+  "spotIndex": 0,
+  "szDecimals": 0,
+  "baseToken": "PURR",
+  "quoteToken": "USDC",
+  "_source": "HyperCore testnet info endpoint spotMetaAndAssetCtxs, fetched 2026-10-17",
+  "_baseTokenId": "0xc4bf3f870c0e9465323c0b6ed28096c2",
+  "_quoteTokenId": "0xeb62eee3685fc4c43992febcd9e75443",
+  "_baseWeiDecimals": 5,
+  "_quoteWeiDecimals": 8,
+  "_minOrderValueUsd": 10,
+  "_priceRule": "5 significant figures, at most 8 - szDecimals decimals"
+}
