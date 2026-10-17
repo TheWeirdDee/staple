@@ -1,0 +1,23 @@
+{
+  "name": "@staple/keeper",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "start": "tsx src/main.ts",
+    "deploy": "tsx src/deploy.ts",
+    "probe": "tsx src/probe.ts"
+  },
+  "dependencies": {
+    "@msgpack/msgpack": "3.0.0-beta2",
+    "@staple/reference": "workspace:*",
+    "viem": "2.21.55"
+  },
+  "devDependencies": {
+    "@types/node": "22.10.2",
+    "tsx": "4.19.2",
+    "typescript": "5.7.2",
+    "vitest": "2.1.8"
+  }
+}
