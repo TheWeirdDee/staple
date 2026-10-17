@@ -127,11 +127,11 @@ class Desk:
         return self._send(selector("heartbeat(uint256)") + encode(["uint256"], [mid]), 120_000)
 
     def poke(self, mid: int) -> str:
-        return self._send(selector("poke(uint256)") + encode(["uint256"], [mid]), 1_500_000)
+        return self._send(selector("poke(uint256)") + encode(["uint256"], [mid]), 2_500_000)
 
     def report_mismatch(self, mid: int, evidence: bytes, detail: str) -> str:
         data = selector("reportMismatch(uint256,bytes32,string)") + encode(["uint256", "bytes32", "string"], [mid, evidence, detail])
-        return self._send(data, 1_500_000)
+        return self._send(data, 2_500_000)
 
     def report_agent_revoked(self, mid: int) -> str:
         return self._send(selector("reportAgentRevoked(uint256)") + encode(["uint256"], [mid]), 300_000)
