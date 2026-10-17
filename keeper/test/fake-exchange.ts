@@ -63,6 +63,8 @@ export class FakeExchange implements ExchangePort {
     return { baseE8: this.baseE8, quoteE8: this.quoteE8 };
   }
   async fillsSince(startMs: number) {
+    // The real /info endpoint rejects a negative or fractional startTime (HTTP 422).
+    if (!Number.isInteger(startMs) || startMs < 0) throw new Error(`/info HTTP 422: bad startTime ${startMs}`);
     const f = this.fills.filter((x) => x.timeMs >= startMs);
     return this.duplicateFills ? [...f, ...f] : f;
   }
