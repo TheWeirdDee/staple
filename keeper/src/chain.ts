@@ -183,52 +183,66 @@ export class DeskChain implements DeskPort {
     const run = this.pending.then(async () => {
       const hash = await fn();
       const rcpt = await this.pub.waitForTransactionReceipt({ hash, timeout: 30_000 });
-      if (rcpt.status !== 'success') throw new Error(`tx reverted: ${hash}`);
+      if (rcpt.status !== 'success') throw new Error(`tx reverted: ${hash} ${await this.revertReason(hash)}`);
       return { hash, block: rcpt.blockNumber };
     });
     this.pending = run.catch(() => undefined);
     return run;
   }
 
+  /** Replays a failed transaction as a call at its block to recover the custom error name. */
+  private async revertReason(hash: Hex): Promise<string> {
+    try {
+      const tx = await this.pub.getTransaction({ hash });
+      await this.pub.call({ to: tx.to!, data: tx.input, account: tx.from, blockNumber: tx.blockNumber! - 1n });
+      const r = await this.pub.getTransactionReceipt({ hash });
+      return `(no revert on replay; gas limit ${tx.gas}, used ${r.gasUsed})`;
+    } catch (e: any) {
+      const data = e?.cause?.data ?? e?.data;
+      try {
+        if (data) {
+          const { decodeErrorResult } = await import('viem');
+          const d = decodeErrorResult({ abi: StapleDeskAbi as any, data });
+          return `${d.errorName}(${(d.args ?? []).join(',')})`;
+        }
+      } catch {
+        /* fall through */
+      }
+      return String(e?.shortMessage ?? e?.message ?? e).slice(0, 200);
+    }
+  }
+
+  /**
+   * Fixed gas limits sized for the bounded worst case (24 live orders, 10 placements, 16 outcomes). Estimates
+   * are unreliable here: the branch a tick takes depends on block.timestamp, so an estimate taken one block
+   * earlier can follow a far cheaper path (measured: ~44k vs ~690k). Unused gas is not charged.
+   */
+  static readonly GAS = { tick: 4_000_000n, reportOutcomes: 3_000_000n, poke: 2_500_000n } as const;
+
+  private async writeDesk(functionName: 'tick' | 'reportOutcomes' | 'poke', args: unknown[]): Promise<Hex> {
+    const req = { address: this.desk, abi: StapleDeskAbi, functionName, args, account: this.account } as any;
+    // Surface genuine reverts (custom errors) before sending, using the full gas allowance.
+    await this.pub.simulateContract({ ...req, gas: DeskChain.GAS[functionName] });
+    return this.wallet.writeContract({ ...req, chain: this.chain, gas: DeskChain.GAS[functionName] });
+  }
+
   submitTick(o: Observation) {
-    return this.send(async () => {
-      const sig = await this.signObservation(o);
-      return this.wallet.writeContract({
-        address: this.desk,
-        abi: StapleDeskAbi,
-        functionName: 'tick',
-        args: [o, sig],
-        chain: this.chain,
-        account: this.account,
-      } as any);
-    });
+    return this.send(async () => this.writeDesk('tick', [o, await this.signObservation(o)]));
   }
 
   submitOutcomes(id: bigint, batchSeq: bigint, outs: Outcome[]) {
-    return this.send(async () => {
-      const sig = await this.signOutcomes(id, batchSeq, outs);
-      return this.wallet.writeContract({
-        address: this.desk,
-        abi: StapleDeskAbi,
-        functionName: 'reportOutcomes',
-        args: [id, batchSeq, outs.map((o) => ({ ...o, kind: o.kind as number })), sig],
-        chain: this.chain,
-        account: this.account,
-      });
-    });
+    return this.send(async () =>
+      this.writeDesk('reportOutcomes', [
+        id,
+        batchSeq,
+        outs.map((o) => ({ ...o, kind: o.kind as number })),
+        await this.signOutcomes(id, batchSeq, outs),
+      ]),
+    );
   }
 
   poke(id: bigint) {
-    return this.send(() =>
-      this.wallet.writeContract({
-        address: this.desk,
-        abi: StapleDeskAbi,
-        functionName: 'poke',
-        args: [id],
-        chain: this.chain,
-        account: this.account,
-      }),
-    );
+    return this.send(() => this.writeDesk('poke', [id]));
   }
 
   async registryIdentity(id: bigint) {
