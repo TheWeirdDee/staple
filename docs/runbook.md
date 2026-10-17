@@ -47,6 +47,22 @@ npx tsx src/ops.ts agents                           # confirm both are listed on
 
 Commit the two deployment files (one per commit) so the site and services pick them up.
 
+Measured on Elysium testnet (base fee 0.1 gwei, October 2026):
+
+| Action | Gas used | Testnet HYPE |
+| --- | --- | --- |
+| Full deploy (3 libraries, fee token, registry, desk, bind) | — | 0.0012 total |
+| Keeper tick (observation + decision) | ~190k | ~0.000019 |
+| Watcher heartbeat | ~39k | ~0.000004 |
+| Watcher poke that halts a stale mandate | ~70k | ~0.000007 |
+| Owner activate / pause | 161k / 45k | ~0.000016 / ~0.000005 |
+
+A 24 h campaign ticking every 5 s needs about 0.35 HYPE for the operator key, and the watcher needs about 0.1 HYPE
+at a 10 s interval. Ask the Elysium faucet repeatedly or top up from the deployer before a campaign.
+
+The Hyperliquid testnet USDC faucet only pays addresses that have used Hyperliquid mainnet. Without that, the
+owner account needs testnet USDC sent by someone else.
+
 ## 3. Run the services
 
 ### Hosted (GitHub Actions)
