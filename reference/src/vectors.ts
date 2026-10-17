@@ -35,7 +35,7 @@ const baseExposure: ExposureParams = {
   feeAllowanceBps: 10,
 };
 
-function lad(name: string, over: Partial<LadderInput> & { quotes?: Partial<QuoteParams> }) {
+function lad(name: string, over: Partial<Omit<LadderInput, 'quotes'>> & { quotes?: Partial<QuoteParams> }) {
   const input: LadderInput = {
     midE8: q8('4.55685'),
     inventoryE8: q8('30'),
