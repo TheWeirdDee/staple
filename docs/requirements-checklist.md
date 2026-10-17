@@ -8,19 +8,19 @@ dependency), **deferred** (out of first-release scope per the PRD). Last updated
 
 | Gate | Status | Evidence | Remaining |
 | --- | --- | --- | --- |
-| G1 live place/cancel/outcome loop, independently observed | pending | `runs/g1/` once run | Testnet USDC for the owner, testnet HYPE for the deployer |
-| G2 reservation, precision, access-control, idempotency tests | met (offline) | `runs/offline-tests.json`: 95 passed, 0 failed | — |
+| G1 live place/cancel/outcome loop, independently observed | pending | `runs/g1/` once run | HyperCore testnet USDC for the owner account (contracts are deployed) |
+| G2 reservation, precision, access-control, idempotency tests | met (offline) | `runs/offline-tests.json`: 96 passed, 0 failed | — |
 | G3 stale shutdown without ticks; late fills and cancel failures reconcile | offline-tested | `test_staleShutdownWithoutAnyNewTick`, keeper outage, delayed/rejected cancel tests | Observe on testnet during the campaign |
-| G4 pause/revoke UI separates requested from confirmed | implemented | `web/src/pages/Manage.tsx` | Exercise against the live deployment in a browser |
+| G4 pause/revoke UI separates requested from confirmed | offline-tested | `web/src/pages/Manage.tsx`, `runs/e2e-local.json` (browser, local node) | Exercise against the testnet deployment once the mandate can be activated |
 | G5 public evidence with failures, unknowns, duration, limits | partial | `/proof`, `web/public/evidence/index.json` | Campaign results |
-| G6 submission facts align with what is deployed and demonstrated | partial | `submission-facts.json` | Final re-audit after deployment |
+| G6 submission facts align with what is deployed and demonstrated | partial | `submission-facts.json` (deployment and hosted services recorded) | Final re-audit after the live loop and campaign |
 
 ## PRD sections
 
 | § | Requirement | Location | Status | Verification |
 | --- | --- | --- | --- | --- |
 | 0, 3 | One existing HyperCore testnet spot market | PURR/USDC, `runs/market-purr-usdc-testnet.json` | implemented | `spotMetaAndAssetCtxs` |
-| 3 | Dedicated owner account | `0x7C7e…6550` (demo owner) | pending | funding |
+| 3 | Dedicated owner account | `0x7C7e…6550` (demo owner) | pending | Elysium gas funded; HyperCore testnet USDC pending |
 | 4 | Mandate schema: identity, market, quotes, exposure, risk, lifecycle, fees | `contracts/src/StapleTypes.sol`, `MandateRegistry.sol` | offline-tested | forge |
 | 4 | Exact units, rounding, bounds | `docs/units.md`, frozen vectors | offline-tested | vectors replayed in TS and Solidity |
 | 4 | Versioned edits with diff; ≥ 60 s notice for risk-increasing edits; switch only after old orders are terminal | `proposePolicy`, `_maybeSwitchVersion`, web diff | offline-tested | `test_riskIncreasingEditWaitsNoticeAndOldOrdersFirst` |
@@ -44,9 +44,10 @@ dependency), **deferred** (out of first-release scope per the PRD). Last updated
 | 7 | Five-step owner exit, each step confirmed | `Manage.tsx`, `requestRevoke`/`reportAgentRevoked` | offline-tested (contract) | revocation via zero address to verify on testnet |
 | 7 | Restart recovery before new intents; duplicate and out-of-order events; finality assumption | `Keeper.recover`, outcome idempotency | offline-tested | integration |
 | 8 | Component architecture; dependency matrix | `docs/architecture.md`, `docs/dependencies.md` | implemented | — |
+| 8 | Contracts deployed on Elysium testnet; services hosted | `runs/deployment-testnet.json`, `.github/workflows/services.yml` | testnet-verified | registry `0x5acc…e220`, desk `0xb040…fd3b`; watcher heartbeat tx `0xa17f9e4e…a795` from the hosted runner |
 | 9 | Security table responses (watcher, fail-closed, encrypted keys, bounded work, no admin) | various | offline-tested / implemented | — |
 | 10 | Pricing and token plan without commitments | `docs/token-plan.md` | implemented | — |
-| 11 | Landing, public mandate, owner console; simulation deferred | `web/` | implemented | screenshots, browser checks |
+| 11 | Landing, public mandate, owner console; simulation deferred | `web/` | implemented | screenshots; browser e2e on a local node; public pages checked in a browser against the testnet deployment |
 | 12 | Frozen metric, ABBA method, independent sampler, labelled taker, published failures | `docs/metrics.md`, `sampler/`, `keeper/src/campaign.ts` | implemented | campaign pending funding |
 | 13 | Latency distributions, reproducibility manifests, fresh-clone offline tests | keeper/watcher logs, `scripts/` | implemented | — |
 | 14 | Wallet-free judge path; 100 s demo | `/`, `/mandate`, `/proof`; `docs/demo-script.md` | implemented | demo footage needs the live run |
