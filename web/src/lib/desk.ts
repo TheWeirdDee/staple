@@ -2,7 +2,12 @@ import { createPublicClient, http, parseEventLogs, type Hex, type Log } from 'vi
 import { MandateRegistryAbi, StapleDeskAbi } from '@staple/reference/abi';
 import { elysiumTestnet, type Deployment } from './config';
 
-export const pub = createPublicClient({ chain: elysiumTestnet, transport: http(undefined, { timeout: 20_000, retryCount: 2 }) });
+// cacheTime 0: history loads must read the true head, not a block number cached by an earlier page.
+export const pub = createPublicClient({
+  chain: elysiumTestnet,
+  transport: http(undefined, { timeout: 20_000, retryCount: 2 }),
+  cacheTime: 0,
+});
 
 export const MANDATE_STATES = [
   'DRAFT',
