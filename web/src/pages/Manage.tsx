@@ -225,7 +225,7 @@ function Pause({ v, dep, addr, onDone }: { v: MandateView; dep: Deployment; addr
     <section className="card stack">
       <div className="spread">
         <h2 className="h3">Pause quoting</h2>
-        {v.state === 'PAUSING' && <Badge tone="warn" pending>{`${v.orders.length} orders awaiting confirmed cancellation`}</Badge>}
+        {v.state === 'PAUSING' && <Badge tone="warn" pending long>{`${v.orders.length} orders awaiting confirmed cancellation`}</Badge>}
       </div>
       <p className="body">
         Pausing stops new quotes immediately at the policy layer and requests cancellation of every order. The mandate shows PAUSED
@@ -310,8 +310,8 @@ function Revoke({
   const started = v.state === 'REVOKING' || v.state === 'REVOKED';
   const ordersGone = v.orders.length === 0 && (ex?.open.length ?? 1) === 0;
   const st = (done: boolean, active: boolean) => (done ? 'done' : active ? 'active' : undefined);
-  const base = ex?.bal.find((b) => b.coin === (dep.market?.baseToken ?? 'PURR'))?.total;
-  const quote = ex?.bal.find((b) => b.coin === (dep.market?.quoteToken ?? 'USDC'))?.total;
+  const base = ex ? (ex.bal.find((b) => b.coin === (dep.market?.baseToken ?? 'PURR'))?.total ?? '0') : undefined;
+  const quote = ex ? (ex.bal.find((b) => b.coin === (dep.market?.quoteToken ?? 'USDC'))?.total ?? '0') : undefined;
   return (
     <section className="stack" id="exit">
       <SectionHead kicker="Exit" title="Cancel all and revoke.">
@@ -355,7 +355,7 @@ function Revoke({
             <p className="small">If this does not clear within a minute, the keeper may be down. The watcher attempts emergency cancellation; you can also cancel directly on Hyperliquid.</p>
           )}
         </li>
-        <li data-state={st(!agentListed && !!ex, started && ordersGone && agentListed)}>
+        <li data-state={st(started && !agentListed && !!ex, started && ordersGone && agentListed)}>
           <h3 className="h3">Revoke the agent on Hyperliquid</h3>
           <p className="small">
             Signed with your wallet. Replaces the named agent <span className="code">{name}</span> with no address.{' '}
