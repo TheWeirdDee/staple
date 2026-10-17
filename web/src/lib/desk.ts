@@ -61,6 +61,24 @@ export const REASONS: Record<number, { code: string; text: string }> = {
   20: { code: 'CANCEL_RETRY', text: 'A cancellation was not confirmed in time and was requested again' },
 };
 
+/**
+ * Reason shown for a Decision event. A quoting decision that placed nothing is ambiguous from the event alone:
+ * either the existing orders still match the ladder, or no order fits the account balances and policy limits.
+ * Pass `liveOrders` when the current order count is known (the latest decision) to resolve it.
+ */
+export function decisionReason(args: { reason: number | bigint; placed: number | bigint }, liveOrders?: number) {
+  const n = Number(args.reason);
+  if ((n === 1 || n === 3) && Number(args.placed) === 0) {
+    if (liveOrders === 0) {
+      return { code: `${REASONS[n].code} · NOTHING FITS`, text: 'The ladder was computed, but no order fits the account balances and policy limits, so nothing is quoted' };
+    }
+    if (liveOrders === undefined) {
+      return { code: REASONS[n].code, text: 'Ladder computed; no new order (existing orders still match, or nothing fits the balances and limits)' };
+    }
+  }
+  return REASONS[n] ?? { code: `#${n}`, text: '' };
+}
+
 const read = <T,>(address: Hex, abi: any, functionName: string, args: unknown[]) =>
   pub.readContract({ address, abi, functionName, args } as any) as Promise<T>;
 
