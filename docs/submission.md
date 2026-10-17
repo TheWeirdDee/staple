@@ -33,8 +33,9 @@ the wallet-free path takes under five minutes: landing → `/mandate` → Hyperl
 ## 4. Status, timeline, token plan, support requested
 
 **Working** (only items with evidence; see `/proof`):
-- [From `submission-facts.json` at submission time. As of this draft: contracts, keeper, watcher and sampler pass 95
-  offline tests; the live testnet loop is pending funding.]
+- [From `submission-facts.json` at submission time. As of this draft: contracts, keeper, watcher and sampler pass 96
+  offline tests; contracts are deployed on Elysium testnet with mandate 1 as a draft; hosted watcher heartbeats are
+  on-chain; the live trading loop is pending HyperCore testnet funds.]
 
 **In development:** [testnet campaign results; demo footage]
 
