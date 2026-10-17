@@ -1,0 +1,5 @@
+packages:
+  - reference
+  - keeper
+  - watcher
+  - web
