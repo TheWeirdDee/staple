@@ -1,0 +1,86 @@
+name: Testnet services
+
+# Runs the keeper, watcher, independent sampler and (when configured) the campaign controller on testnet.
+# Each run lasts ~5h40m; the concurrency group keeps exactly one running and one queued, and the schedule
+# re-queues the next run, so the services hand over every few hours with a short restart gap. During a gap the
+# on-chain watchdog and the exchange-side scheduled cancel (renewed every 30 s, firing 90 s after the last
+# renewal) remove resting orders. On start the keeper reconciles before any new exposure.
+#
+# Requires repository secrets STAPLE_KEYSTORE_B64 and STAPLE_KEYSTORE_PASSPHRASE (see docs/runbook.md).
+
+on:
+  schedule:
+    - cron: '*/20 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: testnet-services
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check configuration
+        id: cfg
+        env:
+          KS: ${{ secrets.STAPLE_KEYSTORE_B64 }}
+        run: |
+          if [ -z "$KS" ] || [ ! -f runs/deployment-testnet.json ] || [ ! -f deploy/services.env ]; then
+            echo "enabled=false" >> "$GITHUB_OUTPUT"; echo "Services not configured; exiting."; exit 0
+          fi
+          echo "enabled=true" >> "$GITHUB_OUTPUT"
+      - if: steps.cfg.outputs.enabled == 'true'
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.28.0
+      - if: steps.cfg.outputs.enabled == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - if: steps.cfg.outputs.enabled == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - if: steps.cfg.outputs.enabled == 'true'
+        name: Install
+        run: |
+          pnpm install --frozen-lockfile
+          pip install -r watcher/requirements.txt -r sampler/requirements.txt
+      - if: steps.cfg.outputs.enabled == 'true'
+        name: Restore keeper and watcher state
+        uses: actions/cache/restore@v4
+        with:
+          path: state/persist
+          key: services-state-${{ github.run_id }}
+          restore-keys: services-state-
+      - if: steps.cfg.outputs.enabled == 'true'
+        name: Run services
+        env:
+          STAPLE_KEYSTORE_B64: ${{ secrets.STAPLE_KEYSTORE_B64 }}
+          STAPLE_KEYSTORE_PASSPHRASE: ${{ secrets.STAPLE_KEYSTORE_PASSPHRASE }}
+        run: |
+          set -a; . deploy/services.env; set +a
+          mkdir -p state/persist
+          umask 077
+          echo "$STAPLE_KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/keystore.json"
+          export STAPLE_KEYSTORE="$RUNNER_TEMP/keystore.json"
+          export STAPLE_STATE_DIR="$PWD/state/persist"
+          export STAPLE_PUBLISH=1
+          export STAPLE_PYTHON=python
+          deploy/run-services.sh
+          rm -f "$RUNNER_TEMP/keystore.json"
+      - if: always() && steps.cfg.outputs.enabled == 'true'
+        name: Save keeper and watcher state
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            state/persist/wal-*.json
+            state/persist/watcher-state-*.json
+          key: services-state-${{ github.run_id }}
