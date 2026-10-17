@@ -184,7 +184,8 @@ export function campaignPolicy(expirySec: bigint): Policy {
   const bookRule: BookRule = 'JOIN';
   return {
     market: PURR_USDC_TESTNET,
-    quotes: { spreadBps: 40, levels: 2, levelSpacingBps: 20, sizeLots: 3n, skewBps: 30, requoteBps: 10, bookRule },
+    // 38 bps keeps the rounded quotes (bids down, asks up) inside the frozen 40 bps target (docs/metrics.md).
+    quotes: { spreadBps: 38, levels: 2, levelSpacingBps: 20, sizeLots: 3n, skewBps: 30, requoteBps: 10, bookRule },
     exposure: {
       baselineBaseE8: q('30'),
       minBaseE8: q('10'),
