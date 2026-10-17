@@ -1,0 +1,1 @@
+{"action": {"destination": "0x20fab238078cc82d7db0aebb4bb1a4756fb05846", "token": "USDC:0xeb62eee3685fc4c43992febcd9e75443", "amount": "25", "time": 1792229000123, "type": "spotSend"}, "sig": {"r": "0xc1ea4a0b3f35808a25f98afe657cd2916a3e030b3bf11f170186bd5b9170764", "s": "0x3270401ac0e5f26e0a9344e1febfc3e5ba65cd51c12de2f1a1f99db6d930b756", "v": 28}}
