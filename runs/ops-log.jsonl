@@ -3,3 +3,6 @@
 {"t":"2026-10-17T22:13:34.909Z","cmd":"fund-gas","to":"watcher","address":"0x1Acf1A332eEeC79A69D3C83A3E5582e5d425ACDb","amount":"0.02","tx":"0x28cc53e4d7ca5a7781fec06400a43287769467f77c0f041e9a44bebae3389b1d"}
 {"t":"2026-10-17T22:13:36.510Z","cmd":"fund-gas","to":"owner","address":"0x7C7e3662afeA282c27bf24329D915C02d4746550","amount":"0.02","tx":"0xa35b8c0414a6114cd2f0c9f0c3ee710571d63e2a869d996c2f22d9e284c5ff8c"}
 {"t":"2026-10-17T22:13:48.583Z","cmd":"create-mandate","id":"1","tx":"0x98c02ce233ed0fe6afc18cbe0aade91637a653b2d59eae0060dfd68b06e7bce0","feeDepositTx":"0x3ee629fa856c77f19918e4b1412ee9d0819b042724f365aafce9bab187da8e19","expiryHours":"96"}
+{"t":"2026-10-17T22:51:41.276Z","cmd":"create-mandate","id":"2","tx":"0xaa76cdcbf78a21d411feb3dada023f6bc7ed3c6efb11f92b60e2a3f63a26d843","feeDepositTx":"0xba46de3925b8aef332d986d1f6cb0a95931996d2c06d7abb8bd5487338ab131f","expiryHours":"6","featured":false}
+{"t":"2026-10-17T22:51:47.892Z","cmd":"activate","id":"2","tx":"0xf4a6a9e9ffc3d9be25ea1d76149dc71920156967a900efcf735caf1ec78c8da7","block":"10736171"}
+{"t":"2026-10-17T22:57:15.700Z","cmd":"pause","id":"2","tx":"0x25e498d03824990ad6a4f0fb0f0030b7e38fe093dcc2bef7571c93b6489083fd","block":"10738048"}
