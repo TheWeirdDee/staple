@@ -1,0 +1,1473 @@
+{
+  "version": 1,
+  "units": "pxE8 / lots / baseE8 / quoteE8 — see docs/units.md",
+  "ticks": [
+    {
+      "name": "purr 4.55685",
+      "pxE8": "455685000",
+      "szDecimals": 0,
+      "isSpot": true,
+      "down": "455680000",
+      "up": "455690000"
+    },
+    {
+      "name": "purr exact 4.5342",
+      "pxE8": "453420000",
+      "szDecimals": 0,
+      "isSpot": true,
+      "down": "453420000",
+      "up": "453420000"
+    },
+    {
+      "name": "five sig figs 12345.6",
+      "pxE8": "1234560000000",
+      "szDecimals": 0,
+      "isSpot": true,
+      "down": "1234500000000",
+      "up": "1234600000000"
+    },
+    {
+      "name": "integer allowed 123456.7",
+      "pxE8": "12345670000000",
+      "szDecimals": 0,
+      "isSpot": true,
+      "down": "12345600000000",
+      "up": "12345700000000"
+    },
+    {
+      "name": "sub-unit 0.00014613",
+      "pxE8": "14613",
+      "szDecimals": 0,
+      "isSpot": true,
+      "down": "14613",
+      "up": "14613"
+    },
+    {
+      "name": "spot szDec 2 caps decimals at 6: 0.00012345",
+      "pxE8": "12345",
+      "szDecimals": 2,
+      "isSpot": true,
+      "down": "12300",
+      "up": "12400"
+    },
+    {
+      "name": "perp cap szDec 1 0.012345",
+      "pxE8": "1234500",
+      "szDecimals": 1,
+      "isSpot": false,
+      "down": "1234000",
+      "up": "1235000"
+    },
+    {
+      "name": "boundary 9.99996 rounds up to 10",
+      "pxE8": "999996000",
+      "szDecimals": 0,
+      "isSpot": true,
+      "down": "999990000",
+      "up": "1000000000"
+    },
+    {
+      "name": "boundary 99999.5 rounds up to 100000",
+      "pxE8": "9999950000000",
+      "szDecimals": 0,
+      "isSpot": true,
+      "down": "9999900000000",
+      "up": "10000000000000"
+    },
+    {
+      "name": "tiny price below tick 0.00000004 szDec 2",
+      "pxE8": "4",
+      "szDecimals": 2,
+      "isSpot": true,
+      "down": "0",
+      "up": "100"
+    }
+  ],
+  "healthy": [
+    {
+      "name": "wide external book",
+      "bid": "453420000",
+      "ask": "457950000",
+      "bidDepth": "100000",
+      "askDepth": "77692",
+      "spreadBps": 40,
+      "sizeLots": "3",
+      "expected": false
+    },
+    {
+      "name": "tight and deep",
+      "bid": "455600000",
+      "ask": "455750000",
+      "bidDepth": "10",
+      "askDepth": "10",
+      "spreadBps": 40,
+      "sizeLots": "3",
+      "expected": true
+    },
+    {
+      "name": "tight but thin bid",
+      "bid": "455600000",
+      "ask": "455750000",
+      "bidDepth": "2",
+      "askDepth": "10",
+      "spreadBps": 40,
+      "sizeLots": "3",
+      "expected": false
+    },
+    {
+      "name": "exactly at target",
+      "bid": "9980000000",
+      "ask": "10020000000",
+      "bidDepth": "3",
+      "askDepth": "3",
+      "spreadBps": 40,
+      "sizeLots": "3",
+      "expected": true
+    },
+    {
+      "name": "crossed book",
+      "bid": "460000000",
+      "ask": "450000000",
+      "bidDepth": "10",
+      "askDepth": "10",
+      "spreadBps": 40,
+      "sizeLots": "3",
+      "expected": false
+    },
+    {
+      "name": "one side empty",
+      "bid": "0",
+      "ask": "450000000",
+      "bidDepth": "10",
+      "askDepth": "10",
+      "spreadBps": 40,
+      "sizeLots": "3",
+      "expected": false
+    }
+  ],
+  "ladders": [
+    {
+      "name": "campaign policy at baseline inventory",
+      "input": {
+        "midE8": "455685000",
+        "inventoryE8": "3000000000",
+        "extBestBidE8": "453420000",
+        "extBestAskE8": "457950000",
+        "healthy": false,
+        "market": {
+          "asset": 10000,
+          "szDecimals": 0,
+          "isSpot": true,
+          "minNotionalE8": "1000000000"
+        },
+        "exposure": {
+          "baselineBaseE8": "3000000000",
+          "minBaseE8": "1000000000",
+          "maxBaseE8": "5000000000",
+          "quoteBudgetE8": "15000000000",
+          "maxOutstandingNotionalE8": "10000000000",
+          "feeAllowanceBps": 10
+        },
+        "quotes": {
+          "spreadBps": 40,
+          "levels": 2,
+          "levelSpacingBps": 20,
+          "sizeLots": "3",
+          "skewBps": 30,
+          "requoteBps": 10,
+          "bookRule": "JOIN"
+        }
+      },
+      "expected": {
+        "bids": [
+          {
+            "pxE8": "454770000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "453860000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          }
+        ],
+        "asks": [
+          {
+            "pxE8": "456600000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "457510000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          }
+        ],
+        "reservationE8": "455685000",
+        "skewBps": 0
+      }
+    },
+    {
+      "name": "long inventory skews quotes down",
+      "input": {
+        "midE8": "455685000",
+        "inventoryE8": "4500000000",
+        "extBestBidE8": "453420000",
+        "extBestAskE8": "457950000",
+        "healthy": false,
+        "market": {
+          "asset": 10000,
+          "szDecimals": 0,
+          "isSpot": true,
+          "minNotionalE8": "1000000000"
+        },
+        "exposure": {
+          "baselineBaseE8": "3000000000",
+          "minBaseE8": "1000000000",
+          "maxBaseE8": "5000000000",
+          "quoteBudgetE8": "15000000000",
+          "maxOutstandingNotionalE8": "10000000000",
+          "feeAllowanceBps": 10
+        },
+        "quotes": {
+          "spreadBps": 40,
+          "levels": 2,
+          "levelSpacingBps": 20,
+          "sizeLots": "3",
+          "skewBps": 30,
+          "requoteBps": 10,
+          "bookRule": "JOIN"
+        }
+      },
+      "expected": {
+        "bids": [
+          {
+            "pxE8": "453770000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "452860000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          }
+        ],
+        "asks": [
+          {
+            "pxE8": "455600000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "456510000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          }
+        ],
+        "reservationE8": "454682493",
+        "skewBps": 22
+      }
+    },
+    {
+      "name": "short inventory skews quotes up",
+      "input": {
+        "midE8": "455685000",
+        "inventoryE8": "1200000000",
+        "extBestBidE8": "453420000",
+        "extBestAskE8": "457950000",
+        "healthy": false,
+        "market": {
+          "asset": 10000,
+          "szDecimals": 0,
+          "isSpot": true,
+          "minNotionalE8": "1000000000"
+        },
+        "exposure": {
+          "baselineBaseE8": "3000000000",
+          "minBaseE8": "1000000000",
+          "maxBaseE8": "5000000000",
+          "quoteBudgetE8": "15000000000",
+          "maxOutstandingNotionalE8": "10000000000",
+          "feeAllowanceBps": 10
+        },
+        "quotes": {
+          "spreadBps": 40,
+          "levels": 2,
+          "levelSpacingBps": 20,
+          "sizeLots": "3",
+          "skewBps": 30,
+          "requoteBps": 10,
+          "bookRule": "JOIN"
+        }
+      },
+      "expected": {
+        "bids": [
+          {
+            "pxE8": "456000000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "455080000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          }
+        ],
+        "asks": [
+          {
+            "pxE8": "457830000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "458750000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          }
+        ],
+        "reservationE8": "456915349",
+        "skewBps": -27
+      }
+    },
+    {
+      "name": "skew clamps beyond max inventory",
+      "input": {
+        "midE8": "455685000",
+        "inventoryE8": "8000000000",
+        "extBestBidE8": "453420000",
+        "extBestAskE8": "457950000",
+        "healthy": false,
+        "market": {
+          "asset": 10000,
+          "szDecimals": 0,
+          "isSpot": true,
+          "minNotionalE8": "1000000000"
+        },
+        "exposure": {
+          "baselineBaseE8": "3000000000",
+          "minBaseE8": "1000000000",
+          "maxBaseE8": "5000000000",
+          "quoteBudgetE8": "15000000000",
+          "maxOutstandingNotionalE8": "10000000000",
+          "feeAllowanceBps": 10
+        },
+        "quotes": {
+          "spreadBps": 40,
+          "levels": 2,
+          "levelSpacingBps": 20,
+          "sizeLots": "3",
+          "skewBps": 30,
+          "requoteBps": 10,
+          "bookRule": "JOIN"
+        }
+      },
+      "expected": {
+        "bids": [
+          {
+            "pxE8": "453400000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "452500000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          }
+        ],
+        "asks": [
+          {
+            "pxE8": "455230000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "456140000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          }
+        ],
+        "reservationE8": "454317945",
+        "skewBps": 30
+      }
+    },
+    {
+      "name": "odd spread uses half-bps exactly",
+      "input": {
+        "midE8": "455685000",
+        "inventoryE8": "3000000000",
+        "extBestBidE8": "453420000",
+        "extBestAskE8": "457950000",
+        "healthy": false,
+        "market": {
+          "asset": 10000,
+          "szDecimals": 0,
+          "isSpot": true,
+          "minNotionalE8": "1000000000"
+        },
+        "exposure": {
+          "baselineBaseE8": "3000000000",
+          "minBaseE8": "1000000000",
+          "maxBaseE8": "5000000000",
+          "quoteBudgetE8": "15000000000",
+          "maxOutstandingNotionalE8": "10000000000",
+          "feeAllowanceBps": 10
+        },
+        "quotes": {
+          "spreadBps": 41,
+          "levels": 2,
+          "levelSpacingBps": 20,
+          "sizeLots": "3",
+          "skewBps": 30,
+          "requoteBps": 10,
+          "bookRule": "JOIN"
+        }
+      },
+      "expected": {
+        "bids": [
+          {
+            "pxE8": "454750000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "453830000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          }
+        ],
+        "asks": [
+          {
+            "pxE8": "456620000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "457540000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          }
+        ],
+        "reservationE8": "455685000",
+        "skewBps": 0
+      }
+    },
+    {
+      "name": "five levels bounded",
+      "input": {
+        "midE8": "455685000",
+        "inventoryE8": "3000000000",
+        "extBestBidE8": "453420000",
+        "extBestAskE8": "457950000",
+        "healthy": false,
+        "market": {
+          "asset": 10000,
+          "szDecimals": 0,
+          "isSpot": true,
+          "minNotionalE8": "1000000000"
+        },
+        "exposure": {
+          "baselineBaseE8": "3000000000",
+          "minBaseE8": "1000000000",
+          "maxBaseE8": "5000000000",
+          "quoteBudgetE8": "15000000000",
+          "maxOutstandingNotionalE8": "10000000000",
+          "feeAllowanceBps": 10
+        },
+        "quotes": {
+          "spreadBps": 40,
+          "levels": 5,
+          "levelSpacingBps": 25,
+          "sizeLots": "3",
+          "skewBps": 30,
+          "requoteBps": 10,
+          "bookRule": "JOIN"
+        }
+      },
+      "expected": {
+        "bids": [
+          {
+            "pxE8": "454770000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "453630000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "452490000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "451350000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "450210000",
+            "szLots": "3",
+            "valid": true
+          }
+        ],
+        "asks": [
+          {
+            "pxE8": "456600000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "457740000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "458880000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "460020000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "461160000",
+            "szLots": "3",
+            "valid": true
+          }
+        ],
+        "reservationE8": "455685000",
+        "skewBps": 0
+      }
+    },
+    {
+      "name": "size below minimum notional is invalid",
+      "input": {
+        "midE8": "455685000",
+        "inventoryE8": "3000000000",
+        "extBestBidE8": "453420000",
+        "extBestAskE8": "457950000",
+        "healthy": false,
+        "market": {
+          "asset": 10000,
+          "szDecimals": 0,
+          "isSpot": true,
+          "minNotionalE8": "1000000000"
+        },
+        "exposure": {
+          "baselineBaseE8": "3000000000",
+          "minBaseE8": "1000000000",
+          "maxBaseE8": "5000000000",
+          "quoteBudgetE8": "15000000000",
+          "maxOutstandingNotionalE8": "10000000000",
+          "feeAllowanceBps": 10
+        },
+        "quotes": {
+          "spreadBps": 40,
+          "levels": 2,
+          "levelSpacingBps": 20,
+          "sizeLots": "2",
+          "skewBps": 30,
+          "requoteBps": 10,
+          "bookRule": "JOIN"
+        }
+      },
+      "expected": {
+        "bids": [
+          {
+            "pxE8": "454770000",
+            "szLots": "2",
+            "valid": false
+          },
+          {
+            "pxE8": "453860000",
+            "szLots": "2",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          }
+        ],
+        "asks": [
+          {
+            "pxE8": "456600000",
+            "szLots": "2",
+            "valid": false
+          },
+          {
+            "pxE8": "457510000",
+            "szLots": "2",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          }
+        ],
+        "reservationE8": "455685000",
+        "skewBps": 0
+      }
+    },
+    {
+      "name": "healthy JOIN never improves external best",
+      "input": {
+        "midE8": "455685000",
+        "inventoryE8": "3000000000",
+        "extBestBidE8": "455600000",
+        "extBestAskE8": "455770000",
+        "healthy": true,
+        "market": {
+          "asset": 10000,
+          "szDecimals": 0,
+          "isSpot": true,
+          "minNotionalE8": "1000000000"
+        },
+        "exposure": {
+          "baselineBaseE8": "3000000000",
+          "minBaseE8": "1000000000",
+          "maxBaseE8": "5000000000",
+          "quoteBudgetE8": "15000000000",
+          "maxOutstandingNotionalE8": "10000000000",
+          "feeAllowanceBps": 10
+        },
+        "quotes": {
+          "spreadBps": 40,
+          "levels": 2,
+          "levelSpacingBps": 20,
+          "sizeLots": "3",
+          "skewBps": 30,
+          "requoteBps": 10,
+          "bookRule": "JOIN"
+        }
+      },
+      "expected": {
+        "bids": [
+          {
+            "pxE8": "454770000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "453860000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          }
+        ],
+        "asks": [
+          {
+            "pxE8": "456600000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "457510000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          }
+        ],
+        "reservationE8": "455685000",
+        "skewBps": 0
+      }
+    },
+    {
+      "name": "post-only: bid that would cross the external ask is invalid",
+      "input": {
+        "midE8": "455685000",
+        "inventoryE8": "3000000000",
+        "extBestBidE8": "453000000",
+        "extBestAskE8": "454700000",
+        "healthy": false,
+        "market": {
+          "asset": 10000,
+          "szDecimals": 0,
+          "isSpot": true,
+          "minNotionalE8": "1000000000"
+        },
+        "exposure": {
+          "baselineBaseE8": "3000000000",
+          "minBaseE8": "1000000000",
+          "maxBaseE8": "5000000000",
+          "quoteBudgetE8": "15000000000",
+          "maxOutstandingNotionalE8": "10000000000",
+          "feeAllowanceBps": 10
+        },
+        "quotes": {
+          "spreadBps": 40,
+          "levels": 2,
+          "levelSpacingBps": 20,
+          "sizeLots": "3",
+          "skewBps": 30,
+          "requoteBps": 10,
+          "bookRule": "JOIN"
+        }
+      },
+      "expected": {
+        "bids": [
+          {
+            "pxE8": "454770000",
+            "szLots": "3",
+            "valid": false
+          },
+          {
+            "pxE8": "453860000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          }
+        ],
+        "asks": [
+          {
+            "pxE8": "456600000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "457510000",
+            "szLots": "3",
+            "valid": true
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          }
+        ],
+        "reservationE8": "455685000",
+        "skewBps": 0
+      }
+    },
+    {
+      "name": "micro-priced token 0.00014612",
+      "input": {
+        "midE8": "14612",
+        "inventoryE8": "3000000000",
+        "extBestBidE8": "14601",
+        "extBestAskE8": "14623",
+        "healthy": false,
+        "market": {
+          "asset": 10523,
+          "szDecimals": 0,
+          "isSpot": true,
+          "minNotionalE8": "1000000000"
+        },
+        "exposure": {
+          "baselineBaseE8": "3000000000",
+          "minBaseE8": "1000000000",
+          "maxBaseE8": "5000000000",
+          "quoteBudgetE8": "15000000000",
+          "maxOutstandingNotionalE8": "10000000000",
+          "feeAllowanceBps": 10
+        },
+        "quotes": {
+          "spreadBps": 40,
+          "levels": 2,
+          "levelSpacingBps": 20,
+          "sizeLots": "100000",
+          "skewBps": 30,
+          "requoteBps": 10,
+          "bookRule": "JOIN"
+        }
+      },
+      "expected": {
+        "bids": [
+          {
+            "pxE8": "14582",
+            "szLots": "100000",
+            "valid": true
+          },
+          {
+            "pxE8": "14553",
+            "szLots": "100000",
+            "valid": true
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          }
+        ],
+        "asks": [
+          {
+            "pxE8": "14642",
+            "szLots": "100000",
+            "valid": true
+          },
+          {
+            "pxE8": "14671",
+            "szLots": "100000",
+            "valid": true
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          }
+        ],
+        "reservationE8": "14612",
+        "skewBps": 0
+      }
+    },
+    {
+      "name": "fractional lots szDecimals 2",
+      "input": {
+        "midE8": "79950000",
+        "inventoryE8": "3000000000",
+        "extBestBidE8": "79900000",
+        "extBestAskE8": "80000000",
+        "healthy": false,
+        "market": {
+          "asset": 11300,
+          "szDecimals": 2,
+          "isSpot": true,
+          "minNotionalE8": "1000000000"
+        },
+        "exposure": {
+          "baselineBaseE8": "3000000000",
+          "minBaseE8": "1000000000",
+          "maxBaseE8": "5000000000",
+          "quoteBudgetE8": "15000000000",
+          "maxOutstandingNotionalE8": "10000000000",
+          "feeAllowanceBps": 10
+        },
+        "quotes": {
+          "spreadBps": 60,
+          "levels": 2,
+          "levelSpacingBps": 20,
+          "sizeLots": "1500",
+          "skewBps": 30,
+          "requoteBps": 10,
+          "bookRule": "JOIN"
+        }
+      },
+      "expected": {
+        "bids": [
+          {
+            "pxE8": "79710000",
+            "szLots": "1500",
+            "valid": true
+          },
+          {
+            "pxE8": "79550000",
+            "szLots": "1500",
+            "valid": true
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          }
+        ],
+        "asks": [
+          {
+            "pxE8": "80190000",
+            "szLots": "1500",
+            "valid": true
+          },
+          {
+            "pxE8": "80350000",
+            "szLots": "1500",
+            "valid": true
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          },
+          {
+            "pxE8": "0",
+            "szLots": "0",
+            "valid": false
+          }
+        ],
+        "reservationE8": "79950000",
+        "skewBps": 0
+      }
+    }
+  ],
+  "reservations": [
+    {
+      "name": "first bid fits",
+      "t": {
+        "buyLots": "0",
+        "sellLots": "0",
+        "buyQuoteE8": "0",
+        "notionalE8": "0"
+      },
+      "baseBalE8": "3000000000",
+      "quoteBalE8": "20000000000",
+      "isBuy": true,
+      "pxE8": "454770000",
+      "lots": "3",
+      "szDecimals": 0,
+      "exposure": {
+        "baselineBaseE8": "3000000000",
+        "minBaseE8": "1000000000",
+        "maxBaseE8": "5000000000",
+        "quoteBudgetE8": "15000000000",
+        "maxOutstandingNotionalE8": "10000000000",
+        "feeAllowanceBps": 10
+      },
+      "expected": {
+        "ok": true,
+        "next": {
+          "buyLots": "3",
+          "sellLots": "0",
+          "buyQuoteE8": "1365674310",
+          "notionalE8": "1364310000"
+        }
+      }
+    },
+    {
+      "name": "first ask fits",
+      "t": {
+        "buyLots": "0",
+        "sellLots": "0",
+        "buyQuoteE8": "0",
+        "notionalE8": "0"
+      },
+      "baseBalE8": "3000000000",
+      "quoteBalE8": "20000000000",
+      "isBuy": false,
+      "pxE8": "456610000",
+      "lots": "3",
+      "szDecimals": 0,
+      "exposure": {
+        "baselineBaseE8": "3000000000",
+        "minBaseE8": "1000000000",
+        "maxBaseE8": "5000000000",
+        "quoteBudgetE8": "15000000000",
+        "maxOutstandingNotionalE8": "10000000000",
+        "feeAllowanceBps": 10
+      },
+      "expected": {
+        "ok": true,
+        "next": {
+          "buyLots": "0",
+          "sellLots": "3",
+          "buyQuoteE8": "0",
+          "notionalE8": "1369830000"
+        }
+      }
+    },
+    {
+      "name": "bid blocked by max inventory incl. resting buys",
+      "t": {
+        "buyLots": "18",
+        "sellLots": "0",
+        "buyQuoteE8": "8200000000",
+        "notionalE8": "8200000000"
+      },
+      "baseBalE8": "3000000000",
+      "quoteBalE8": "20000000000",
+      "isBuy": true,
+      "pxE8": "450000000",
+      "lots": "3",
+      "szDecimals": 0,
+      "exposure": {
+        "baselineBaseE8": "3000000000",
+        "minBaseE8": "1000000000",
+        "maxBaseE8": "5000000000",
+        "quoteBudgetE8": "15000000000",
+        "maxOutstandingNotionalE8": "100000000000",
+        "feeAllowanceBps": 10
+      },
+      "expected": {
+        "ok": false,
+        "next": {
+          "buyLots": "18",
+          "sellLots": "0",
+          "buyQuoteE8": "8200000000",
+          "notionalE8": "8200000000"
+        }
+      }
+    },
+    {
+      "name": "bid exactly at max inventory boundary fits",
+      "t": {
+        "buyLots": "17",
+        "sellLots": "0",
+        "buyQuoteE8": "8000000000",
+        "notionalE8": "8000000000"
+      },
+      "baseBalE8": "3000000000",
+      "quoteBalE8": "20000000000",
+      "isBuy": true,
+      "pxE8": "450000000",
+      "lots": "3",
+      "szDecimals": 0,
+      "exposure": {
+        "baselineBaseE8": "3000000000",
+        "minBaseE8": "1000000000",
+        "maxBaseE8": "5000000000",
+        "quoteBudgetE8": "15000000000",
+        "maxOutstandingNotionalE8": "100000000000",
+        "feeAllowanceBps": 10
+      },
+      "expected": {
+        "ok": true,
+        "next": {
+          "buyLots": "20",
+          "sellLots": "0",
+          "buyQuoteE8": "9351350000",
+          "notionalE8": "9350000000"
+        }
+      }
+    },
+    {
+      "name": "ask blocked by min inventory incl. resting sells",
+      "t": {
+        "buyLots": "0",
+        "sellLots": "18",
+        "buyQuoteE8": "0",
+        "notionalE8": "8200000000"
+      },
+      "baseBalE8": "3000000000",
+      "quoteBalE8": "20000000000",
+      "isBuy": false,
+      "pxE8": "460000000",
+      "lots": "3",
+      "szDecimals": 0,
+      "exposure": {
+        "baselineBaseE8": "3000000000",
+        "minBaseE8": "1000000000",
+        "maxBaseE8": "5000000000",
+        "quoteBudgetE8": "15000000000",
+        "maxOutstandingNotionalE8": "100000000000",
+        "feeAllowanceBps": 10
+      },
+      "expected": {
+        "ok": false,
+        "next": {
+          "buyLots": "0",
+          "sellLots": "18",
+          "buyQuoteE8": "0",
+          "notionalE8": "8200000000"
+        }
+      }
+    },
+    {
+      "name": "opposing buys do not free sell capacity",
+      "t": {
+        "buyLots": "12",
+        "sellLots": "18",
+        "buyQuoteE8": "5500000000",
+        "notionalE8": "13700000000"
+      },
+      "baseBalE8": "3000000000",
+      "quoteBalE8": "20000000000",
+      "isBuy": false,
+      "pxE8": "460000000",
+      "lots": "3",
+      "szDecimals": 0,
+      "exposure": {
+        "baselineBaseE8": "3000000000",
+        "minBaseE8": "1000000000",
+        "maxBaseE8": "5000000000",
+        "quoteBudgetE8": "15000000000",
+        "maxOutstandingNotionalE8": "100000000000",
+        "feeAllowanceBps": 10
+      },
+      "expected": {
+        "ok": false,
+        "next": {
+          "buyLots": "12",
+          "sellLots": "18",
+          "buyQuoteE8": "5500000000",
+          "notionalE8": "13700000000"
+        }
+      }
+    },
+    {
+      "name": "insufficient quote balance",
+      "t": {
+        "buyLots": "0",
+        "sellLots": "0",
+        "buyQuoteE8": "0",
+        "notionalE8": "0"
+      },
+      "baseBalE8": "3000000000",
+      "quoteBalE8": "1360000000",
+      "isBuy": true,
+      "pxE8": "454770000",
+      "lots": "3",
+      "szDecimals": 0,
+      "exposure": {
+        "baselineBaseE8": "3000000000",
+        "minBaseE8": "1000000000",
+        "maxBaseE8": "5000000000",
+        "quoteBudgetE8": "15000000000",
+        "maxOutstandingNotionalE8": "10000000000",
+        "feeAllowanceBps": 10
+      },
+      "expected": {
+        "ok": false,
+        "next": {
+          "buyLots": "0",
+          "sellLots": "0",
+          "buyQuoteE8": "0",
+          "notionalE8": "0"
+        }
+      }
+    },
+    {
+      "name": "insufficient base balance for ask",
+      "t": {
+        "buyLots": "0",
+        "sellLots": "0",
+        "buyQuoteE8": "0",
+        "notionalE8": "0"
+      },
+      "baseBalE8": "200000000",
+      "quoteBalE8": "20000000000",
+      "isBuy": false,
+      "pxE8": "456610000",
+      "lots": "3",
+      "szDecimals": 0,
+      "exposure": {
+        "baselineBaseE8": "0",
+        "minBaseE8": "0",
+        "maxBaseE8": "5000000000",
+        "quoteBudgetE8": "15000000000",
+        "maxOutstandingNotionalE8": "10000000000",
+        "feeAllowanceBps": 10
+      },
+      "expected": {
+        "ok": false,
+        "next": {
+          "buyLots": "0",
+          "sellLots": "0",
+          "buyQuoteE8": "0",
+          "notionalE8": "0"
+        }
+      }
+    },
+    {
+      "name": "outstanding notional cap counts orders awaiting cancel",
+      "t": {
+        "buyLots": "6",
+        "sellLots": "15",
+        "buyQuoteE8": "2740000000",
+        "notionalE8": "9500000000"
+      },
+      "baseBalE8": "3000000000",
+      "quoteBalE8": "20000000000",
+      "isBuy": true,
+      "pxE8": "454770000",
+      "lots": "3",
+      "szDecimals": 0,
+      "exposure": {
+        "baselineBaseE8": "3000000000",
+        "minBaseE8": "1000000000",
+        "maxBaseE8": "5000000000",
+        "quoteBudgetE8": "15000000000",
+        "maxOutstandingNotionalE8": "10000000000",
+        "feeAllowanceBps": 10
+      },
+      "expected": {
+        "ok": false,
+        "next": {
+          "buyLots": "6",
+          "sellLots": "15",
+          "buyQuoteE8": "2740000000",
+          "notionalE8": "9500000000"
+        }
+      }
+    },
+    {
+      "name": "quote budget includes fee allowance (rounded up)",
+      "t": {
+        "buyLots": "0",
+        "sellLots": "0",
+        "buyQuoteE8": "13640000000",
+        "notionalE8": "0"
+      },
+      "baseBalE8": "3000000000",
+      "quoteBalE8": "50000000000",
+      "isBuy": true,
+      "pxE8": "454770000",
+      "lots": "3",
+      "szDecimals": 0,
+      "exposure": {
+        "baselineBaseE8": "3000000000",
+        "minBaseE8": "1000000000",
+        "maxBaseE8": "5000000000",
+        "quoteBudgetE8": "15008000000",
+        "maxOutstandingNotionalE8": "10000000000",
+        "feeAllowanceBps": 10
+      },
+      "expected": {
+        "ok": true,
+        "next": {
+          "buyLots": "3",
+          "sellLots": "0",
+          "buyQuoteE8": "15005674310",
+          "notionalE8": "1364310000"
+        }
+      }
+    }
+  ]
+}
