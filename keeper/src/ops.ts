@@ -116,8 +116,10 @@ async function main() {
       break;
     }
     case 'create-mandate': {
+      // --no-feature creates a test mandate without changing the one the site and hosted services follow.
       const d = dep();
-      const hours = BigInt(args[0] ?? '96');
+      const feature = !args.includes('--no-feature');
+      const hours = BigInt(args.find((a) => /^\d+$/.test(a)) ?? '96');
       const block = await pub.getBlock();
       const policy = policyArgs(campaignPolicy(block.timestamp + hours * 3600n));
       const r = await write(K.owner, d.registry, MandateRegistryAbi, 'createMandate', [policy, addr(K.operator), addr(K.watcher), addr(K.owner)]);
@@ -125,11 +127,13 @@ async function main() {
       await write(K.owner, d.feeToken, TestFeeTokenAbi, 'faucet', []);
       await write(K.owner, d.feeToken, TestFeeTokenAbi, 'approve', [d.registry, 50_000_000n]);
       const f = await write(K.owner, d.registry, MandateRegistryAbi, 'depositFees', [id, 50_000_000n]);
-      d.featuredMandate = id.toString();
-      d.ownerAccount = addr(K.owner);
-      saveDeployment(DEP_PATH, d as any);
-      saveDeployment(WEB_DEP_PATH, d as any);
-      log('create-mandate', { id, tx: r.hash, feeDepositTx: f.hash, expiryHours: hours });
+      if (feature) {
+        d.featuredMandate = id.toString();
+        d.ownerAccount = addr(K.owner);
+        saveDeployment(DEP_PATH, d as any);
+        saveDeployment(WEB_DEP_PATH, d as any);
+      }
+      log('create-mandate', { id, tx: r.hash, feeDepositTx: f.hash, expiryHours: hours, featured: feature });
       break;
     }
     case 'owner-trade': {
