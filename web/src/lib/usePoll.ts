@@ -32,7 +32,8 @@ export function usePoll<T>(fn: () => Promise<T>, ms: number, deps: unknown[] = [
     live.current = true;
     setLoading(true);
     run();
-    const t = ms > 0 ? setInterval(run, ms) : undefined;
+    // Hidden tabs do not poll; the visibility handler refreshes as soon as the tab is shown again.
+    const t = ms > 0 ? setInterval(() => document.visibilityState !== 'hidden' && run(), ms) : undefined;
     const onVis = () => document.visibilityState === 'visible' && run();
     document.addEventListener('visibilitychange', onVis);
     return () => {
