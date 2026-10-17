@@ -1,0 +1,15 @@
+[profile.default]
+src = "src"
+out = "out"
+test = "test"
+script = "script"
+libs = []
+solc_version = "0.8.28"
+evm_version = "cancun"
+optimizer = true
+optimizer_runs = 1
+via_ir = true
+fs_permissions = [{ access = "read", path = "../reference/vectors" }]
+
+[fmt]
+line_length = 110
