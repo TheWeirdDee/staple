@@ -1,0 +1,7 @@
+{"t":1792400754436,"event":"connected"}
+{"t":1792401419339,"event":"connected"}
+{"t":1792402035715,"event":"connected"}
+{"t":1792402705962,"event":"connected"}
+{"t":1792403384643,"event":"connected"}
+{"t":1792403964365,"event":"disconnected","error":"no close frame received or sent"}
+{"t":1792403965783,"event":"connected"}
