@@ -1,0 +1,246 @@
+{
+  "ranAt": "2026-10-19T09:06:47.753Z",
+  "base": "http://127.0.0.1:5180/staple/",
+  "scope": "Production web preview in Chromium; illustrative workflow only. Zoom check uses the equivalent CSS layout viewport.",
+  "results": [
+    {
+      "name": "Responsive layout at 320px",
+      "ok": true,
+      "detail": "{\"overflow\":false,\"clipped\":[]}"
+    },
+    {
+      "name": "Responsive layout at 360px",
+      "ok": true,
+      "detail": "{\"overflow\":false,\"clipped\":[]}"
+    },
+    {
+      "name": "Responsive layout at 390px",
+      "ok": true,
+      "detail": "{\"overflow\":false,\"clipped\":[]}"
+    },
+    {
+      "name": "Responsive layout at 430px",
+      "ok": true,
+      "detail": "{\"overflow\":false,\"clipped\":[]}"
+    },
+    {
+      "name": "Responsive layout at 600px",
+      "ok": true,
+      "detail": "{\"overflow\":false,\"clipped\":[]}"
+    },
+    {
+      "name": "Responsive layout at 768px",
+      "ok": true,
+      "detail": "{\"overflow\":false,\"clipped\":[]}"
+    },
+    {
+      "name": "Responsive layout at 860px",
+      "ok": true,
+      "detail": "{\"overflow\":false,\"clipped\":[]}"
+    },
+    {
+      "name": "Responsive layout at 900px",
+      "ok": true,
+      "detail": "{\"overflow\":false,\"clipped\":[]}"
+    },
+    {
+      "name": "Responsive layout at 1024px",
+      "ok": true,
+      "detail": "{\"overflow\":false,\"clipped\":[]}"
+    },
+    {
+      "name": "Responsive layout at 1280px",
+      "ok": true,
+      "detail": "{\"overflow\":false,\"clipped\":[]}"
+    },
+    {
+      "name": "Responsive layout at 1440px",
+      "ok": true,
+      "detail": "{\"overflow\":false,\"clipped\":[]}"
+    },
+    {
+      "name": "One H1 and all six FAQ questions",
+      "ok": true
+    },
+    {
+      "name": "Reduced motion uses a static example",
+      "ok": true
+    },
+    {
+      "name": "Reduced motion disables background movement",
+      "ok": true
+    },
+    {
+      "name": "FAQ: Who is Staple for?\n+",
+      "ok": true
+    },
+    {
+      "name": "FAQ: Does Staple hold my trading funds?\n+",
+      "ok": true
+    },
+    {
+      "name": "FAQ: What access does the trading agent have?\n+",
+      "ok": true
+    },
+    {
+      "name": "FAQ: Can losses exceed the shutdown threshold?\n+",
+      "ok": true
+    },
+    {
+      "name": "FAQ: What happens when I pause?\n+",
+      "ok": true
+    },
+    {
+      "name": "FAQ: Is this mainnet or testnet?\n+",
+      "ok": true
+    },
+    {
+      "name": "Example spread control responds to keyboard input",
+      "ok": true
+    },
+    {
+      "name": "Example size control responds to keyboard input",
+      "ok": true
+    },
+    {
+      "name": "Mobile navigation opens",
+      "ok": true
+    },
+    {
+      "name": "Escape closes mobile menu and returns focus",
+      "ok": true
+    },
+    {
+      "name": "Mobile anchor How it works clears sticky navigation",
+      "ok": true,
+      "detail": "120.234375"
+    },
+    {
+      "name": "Mobile anchor How it works closes menu",
+      "ok": true
+    },
+    {
+      "name": "Mobile anchor Controls clears sticky navigation",
+      "ok": true,
+      "detail": "120.390625"
+    },
+    {
+      "name": "Mobile anchor Controls closes menu",
+      "ok": true
+    },
+    {
+      "name": "Mobile anchor Evidence clears sticky navigation",
+      "ok": true,
+      "detail": "120.515625"
+    },
+    {
+      "name": "Mobile anchor Evidence closes menu",
+      "ok": true
+    },
+    {
+      "name": "Refresh preserves section deep link",
+      "ok": true
+    },
+    {
+      "name": "Internal destination #/",
+      "ok": true
+    },
+    {
+      "name": "Internal destination #/#how-it-works",
+      "ok": true
+    },
+    {
+      "name": "Internal destination #/#controls",
+      "ok": true
+    },
+    {
+      "name": "Internal destination #/#evidence",
+      "ok": true
+    },
+    {
+      "name": "Internal destination #/console",
+      "ok": true
+    },
+    {
+      "name": "Internal destination #/proof",
+      "ok": true
+    },
+    {
+      "name": "Internal destination #/docs#trust",
+      "ok": true
+    },
+    {
+      "name": "200% zoom reflow equivalent at 640 CSS px",
+      "ok": true
+    },
+    {
+      "name": "Skip link is first keyboard stop",
+      "ok": true
+    },
+    {
+      "name": "Skip link focuses main without breaking hash routing",
+      "ok": true
+    },
+    {
+      "name": "Hero artwork loads from the configured base path",
+      "ok": true
+    },
+    {
+      "name": "Reduced motion still permits manual workflow exploration",
+      "ok": true
+    },
+    {
+      "name": "FAQ opens using the keyboard",
+      "ok": true
+    },
+    {
+      "name": "FAQ closes using the keyboard",
+      "ok": true
+    },
+    {
+      "name": "Illustration step: quotes placed",
+      "ok": true
+    },
+    {
+      "name": "Illustration step: execution checked",
+      "ok": true
+    },
+    {
+      "name": "Illustration step: cancelling quotes",
+      "ok": true
+    },
+    {
+      "name": "Illustration step: quotes withdrawn",
+      "ok": true
+    },
+    {
+      "name": "Illustration distinguishes pending and confirmed cancellation",
+      "ok": true
+    },
+    {
+      "name": "Workflow animation advances while visible",
+      "ok": true
+    },
+    {
+      "name": "Workflow animation can be paused",
+      "ok": true
+    },
+    {
+      "name": "Process progress responds to scrolling",
+      "ok": true
+    },
+    {
+      "name": "Fine-pointer parallax responds to movement",
+      "ok": true
+    },
+    {
+      "name": "Workflow stops updating offscreen",
+      "ok": true
+    },
+    {
+      "name": "No runtime, console, or local HTTP errors",
+      "ok": true
+    }
+  ],
+  "errors": []
+}
