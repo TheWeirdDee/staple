@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'node:url';
 import { existsSync, readFileSync } from 'node:fs';
 import type { Hex } from 'viem';
 import { loadKeystore } from './keystore.js';
@@ -40,7 +41,7 @@ export function loadConfig(): RuntimeConfig {
     agentKey = keys.agent;
   }
   if (!operatorKey || !agentKey) throw new Error('operator and agent keys are required (keystore or env)');
-  const marketPath = process.env.STAPLE_MARKET ?? new URL('../../runs/market-purr-usdc-testnet.json', import.meta.url).pathname;
+  const marketPath = process.env.STAPLE_MARKET ?? fileURLToPath(new URL('../../runs/market-purr-usdc-testnet.json', import.meta.url));
   const market = JSON.parse(readFileSync(marketPath, 'utf8')) as MarketSpec;
   return {
     network,
