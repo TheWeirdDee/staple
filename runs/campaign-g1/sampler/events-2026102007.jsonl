@@ -1,2 +1,6 @@
-{"t":1792479629796,"event":"connected"}
-{"t":1792480281376,"event":"connected"}
+{"t":1792480537693,"event":"start","coin":"PURR/USDC","network":"testnet","depth":10,"version":1}
+{"t":1792480538072,"event":"connected"}
+{"t":1792481172501,"event":"connected"}
+{"t":1792481803112,"event":"connected"}
+{"t":1792482435785,"event":"connected"}
+{"t":1792483112289,"event":"connected"}
