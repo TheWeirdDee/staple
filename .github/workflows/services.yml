@@ -52,7 +52,7 @@ jobs:
         name: Install
         run: |
           pnpm install --frozen-lockfile
-          pip install -r watcher/requirements.txt -r sampler/requirements.txt
+          pip install -r python-requirements.lock
       - if: steps.cfg.outputs.enabled == 'true'
         name: Restore keeper and watcher state
         uses: actions/cache/restore@v4
