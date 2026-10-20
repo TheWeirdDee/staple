@@ -10,7 +10,8 @@
   },
   "scripts": {
     "test": "vitest run",
-    "vectors": "tsx src/gen-vectors.ts"
+    "vectors": "tsx src/gen-vectors.ts",
+    "build": "tsc --noEmit"
   },
   "devDependencies": {
     "tsx": "4.19.2",
