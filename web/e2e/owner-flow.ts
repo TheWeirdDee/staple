@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'node:url';
 /**
  * Browser end-to-end test of the owner flows against REAL contracts on a local node, with the real keeper driving
  * the exchange TEST DOUBLE. The wallet is an injected EIP-1193 shim forwarding to the node's unlocked dev account.
@@ -20,12 +21,20 @@ import { EventLog, Wal } from '../../keeper/src/wal.js';
 import { FakeExchange } from '../../keeper/test/fake-exchange.js';
 import { KEYS, PURR } from '../../keeper/test/harness.js';
 
-const ROOT = new URL('../../', import.meta.url).pathname;
+const ROOT = fileURLToPath(new URL('../../', import.meta.url));
 const OUT = process.env.E2E_OUT ?? join(ROOT, 'web', 'e2e', 'out');
 const PORT = 18999;
 const WEB = 5199;
 const RPC = `http://127.0.0.1:${PORT}`;
-const depFile = join(ROOT, 'web', 'public', 'deployment.json');
+// Local fixtures must never overwrite the published testnet deployment record.
+const depFile = join(ROOT, 'web', 'public', 'e2e-deployment.json');
+let ownsDeployment = false;
+const children: ReturnType<typeof spawn>[] = [];
+function cleanup() {
+  for (const child of children) child.kill();
+  if (ownsDeployment) { rmSync(depFile, { force: true }); ownsDeployment = false; }
+}
+process.on('exit', cleanup);
 const results: { step: string; ok: boolean; detail?: string }[] = [];
 const check = (step: string, ok: boolean, detail?: string) => {
   results.push({ step, ok, detail });
@@ -44,7 +53,10 @@ async function waitFor(fn: () => Promise<boolean>, ms = 30_000, every = 300) {
 async function main() {
   if (existsSync(depFile)) throw new Error('web/public/deployment.json exists; refusing to overwrite a real deployment record');
   mkdirSync(OUT, { recursive: true });
-  const node = spawn('anvil', ['--port', String(PORT), '--silent', '--code-size-limit', '24576'], { stdio: 'ignore' });
+  const localAnvil = join(ROOT, '.tools', 'node_modules', '@foundry-rs', 'anvil-win32-amd64', 'bin', 'anvil.exe');
+  const node = spawn(process.platform === 'win32' && existsSync(localAnvil) ? localAnvil : 'anvil', ['--port', String(PORT), '--silent', '--code-size-limit', '24576'], { stdio: 'ignore' });
+  children.push(node);
+  node.on('error', (error) => { console.error(error.message); process.exit(1); });
   const chain = defineChain({ id: 31337, name: 'anvil', nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 }, rpcUrls: { default: { http: [RPC] } } });
   const pub = createPublicClient({ chain, transport: http(RPC) });
   await waitFor(async () => (await pub.getBlockNumber()) >= 0n);
@@ -62,18 +74,21 @@ async function main() {
       featuredMandate: '1',
     }),
   );
-  const web = spawn('npx', ['vite', '--port', String(WEB), '--strictPort'], {
+  ownsDeployment = true;
+  const web = spawn(process.execPath, [join(ROOT, 'web', 'node_modules', 'vite', 'bin', 'vite.js'), '--port', String(WEB), '--strictPort'], {
     cwd: join(ROOT, 'web'),
-    env: { ...process.env, VITE_STAPLE_RPC: RPC, VITE_STAPLE_CHAIN_ID: '31337' },
+    env: { ...process.env, VITE_STAPLE_RPC: RPC, VITE_STAPLE_CHAIN_ID: '31337', VITE_STAPLE_DEPLOYMENT_URL: '/staple/e2e-deployment.json' },
     stdio: 'ignore',
   });
+  children.push(web);
+  web.on('error', (error) => { console.error(error.message); process.exit(1); });
   const base = `http://localhost:${WEB}/staple/`;
   await waitFor(async () => (await fetch(base)).ok, 30_000);
 
   // Route only https through the session proxy (external APIs); the local node and dev server stay direct.
   const proxyHost = process.env.HTTPS_PROXY?.replace(/^https?:\/\//, '');
   const browser = await chromium.launch({
-    executablePath: '/opt/pw-browsers/chromium',
+    executablePath: process.env.STAPLE_CHROMIUM_PATH || undefined,
     args: proxyHost ? [`--proxy-server=https=${proxyHost}`] : [],
   });
   const errors: string[] = [];
@@ -110,9 +125,7 @@ async function main() {
     }
   } finally {
     await browser.close();
-    web.kill();
-    node.kill();
-    rmSync(depFile, { force: true });
+    cleanup();
   }
   check('no uncaught page errors or app console errors', errors.length === 0, errors.slice(0, 3).join(' | '));
   writeFileSync(join(OUT, 'results.json'), JSON.stringify({ ranAt: new Date().toISOString(), results }, null, 2));
@@ -224,6 +237,6 @@ async function readOnlyChecks(page: Page, base: string, width: number) {
 
 main().catch((e) => {
   console.error(e);
-  rmSync(depFile, { force: true });
+  cleanup();
   process.exit(1);
 });
