@@ -1,0 +1,19 @@
+{"t":1792275259819,"kind":"step_error","error":"/info HTTP 422: Failed to deserialize the JSON body into the target type"}
+{"t":1792275264511,"kind":"step_error","error":"/info HTTP 422: Failed to deserialize the JSON body into the target type"}
+{"t":1792275269466,"kind":"step_error","error":"/info HTTP 422: Failed to deserialize the JSON body into the target type"}
+{"t":1792275278372,"kind":"step_error","error":"/info HTTP 422: Failed to deserialize the JSON body into the target type"}
+{"t":1792275295013,"kind":"step_error","error":"/info HTTP 422: Failed to deserialize the JSON body into the target type"}
+{"t":1792275325873,"kind":"step_error","error":"/info HTTP 422: Failed to deserialize the JSON body into the target type"}
+{"t":1792275356503,"kind":"step_error","error":"/info HTTP 422: Failed to deserialize the JSON body into the target type"}
+{"t":1792275387313,"kind":"step_error","error":"/info HTTP 422: Failed to deserialize the JSON body into the target type"}
+{"t":1792275417965,"kind":"step_error","error":"/info HTTP 422: Failed to deserialize the JSON body into the target type"}
+{"t":1792275448752,"kind":"step_error","error":"/info HTTP 422: Failed to deserialize the JSON body into the target type"}
+{"t":1792275479420,"kind":"step_error","error":"/info HTTP 422: Failed to deserialize the JSON body into the target type"}
+{"t":1792275510157,"kind":"step_error","error":"/info HTTP 422: Failed to deserialize the JSON body into the target type"}
+{"t":1792275540915,"kind":"step_error","error":"/info HTTP 422: Failed to deserialize the JSON body into the target type"}
+{"t":1792275571608,"kind":"step_error","error":"/info HTTP 422: Failed to deserialize the JSON body into the target type"}
+{"t":1792275602257,"kind":"step_error","error":"/info HTTP 422: Failed to deserialize the JSON body into the target type"}
+{"t":1792275633103,"kind":"step_error","error":"/info HTTP 422: Failed to deserialize the JSON body into the target type"}
+{"t":1792275663751,"kind":"step_error","error":"/info HTTP 422: Failed to deserialize the JSON body into the target type"}
+{"t":1792275694965,"kind":"step_error","error":"/info HTTP 422: Failed to deserialize the JSON body into the target type"}
+{"t":1792275701608,"kind":"shutdown","signal":"SIGTERM"}
