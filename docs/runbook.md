@@ -7,7 +7,7 @@ start on any other network.
 
 - Node 22 with pnpm 10, Python 3.11+, and Foundry 1.7 (`npm i @foundry-rs/forge@1.7.1` works where GitHub
   release downloads are blocked).
-- `pnpm install` at the repo root, then `pip install -r watcher/requirements.txt -r sampler/requirements.txt`.
+- `pnpm install` at the repo root, then `pip install -r python-requirements.lock`.
 
 ## 1. Keys
 
@@ -46,6 +46,22 @@ npx tsx src/ops.ts agents                           # confirm both are listed on
 ```
 
 Commit the two deployment files (one per commit) so the site and services pick them up.
+
+Measured on Elysium testnet (base fee 0.1 gwei, October 2026):
+
+| Action | Gas used | Testnet HYPE |
+| --- | --- | --- |
+| Full deploy (3 libraries, fee token, registry, desk, bind) | — | 0.0012 total |
+| Keeper tick (observation + decision) | ~190k | ~0.000019 |
+| Watcher heartbeat | ~39k | ~0.000004 |
+| Watcher poke that halts a stale mandate | ~70k | ~0.000007 |
+| Owner activate / pause | 161k / 45k | ~0.000016 / ~0.000005 |
+
+A 24 h campaign ticking every 5 s needs about 0.35 HYPE for the operator key, and the watcher needs about 0.1 HYPE
+at a 10 s interval. Ask the Elysium faucet repeatedly or top up from the deployer before a campaign.
+
+The Hyperliquid testnet USDC faucet only pays addresses that have used Hyperliquid mainnet. Without that, the
+owner account needs testnet USDC sent by someone else.
 
 ## 3. Run the services
 
@@ -130,3 +146,26 @@ scripts/offline-tests.sh                 # runs/offline-tests.json
 python sampler/metrics.py --sampler <dir> --states <states.json> --out runs/campaign-<id>/results.json
 node scripts/publish-evidence.mjs        # web/public/evidence/index.json
 ```
+
+## Recovering credentials from a cloud coding workspace
+
+Git cloning does not restore ignored files. If the original keys were created in a
+cloud workspace, download its `.secrets/` files securely to the same local directory.
+The original session named `.secrets/STAPLE_KEYSTORE_B64.txt` and `.secrets/STAPLE_KEYSTORE_PASSPHRASE.txt`. Do not paste either file into chat or commit them.
+GitHub Actions secrets cannot be downloaded back as plaintext.
+
+A `.env` file is not required: the CLI reads process environment variables, and the
+hosted workflow reads GitHub Actions secrets. It does not automatically load a root `.env`.
+For a downloaded keystore in PowerShell, set `STAPLE_KEYSTORE` to its absolute path
+and supply `STAPLE_KEYSTORE_PASSPHRASE` through the process environment or secret store.
+If the download contains only the base64 file, decode it locally:
+
+```powershell
+[IO.File]::WriteAllBytes("$PWD/.secrets/keystore.json", [Convert]::FromBase64String([IO.File]::ReadAllText("$PWD/.secrets/STAPLE_KEYSTORE_B64.txt")))
+$env:STAPLE_KEYSTORE = "$PWD/.secrets/keystore.json"
+# Supply STAPLE_KEYSTORE_PASSPHRASE separately; do not print it.
+```
+
+Do not fund the old public addresses until their signing keys have been recovered.
+If the cloud files are unavailable, generate fresh dedicated testnet identities and
+update all role addresses before requesting new funding.
