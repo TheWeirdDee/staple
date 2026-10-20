@@ -1,8 +1,10 @@
 {
-  "generatedAt": "2026-10-17T13:26:46.532Z",
-  "commit": "e4422cd5731b269806089ab4fb034f237a9df797",
-  "network": "Hyperliquid testnet + Elysium testnet (not yet deployed)",
+  "generatedAt": "2026-10-20T08:32:13.135Z",
+  "commit": "d1e34c45fc71a14a58085857d4eea45814e5c03d",
+  "network": "Elysium testnet (99801) + Hyperliquid testnet",
   "market": "PURR/USDC spot",
+  "account": "0x7C7e3662afeA282c27bf24329D915C02d4746550",
+  "mandateId": "1",
   "gates": [
     {
       "id": "G1",
@@ -14,7 +16,7 @@
       "id": "G2",
       "title": "Reservation, precision, access-control and idempotency tests pass",
       "status": "met",
-      "evidence": "95 offline tests passed, 0 failed at 9ff9aac9be"
+      "evidence": "96 offline tests passed, 0 failed; 0 suite command errors at d1e34c45fc"
     },
     {
       "id": "G3",
@@ -38,7 +40,7 @@
       "id": "G6",
       "title": "Submission facts align with what is deployed and demonstrated",
       "status": "partial",
-      "evidence": "submission-facts.json maintained; README, site and submission draft generated from it. Final alignment check pending deployment."
+      "evidence": "Elysium deployment is recorded. Final alignment check remains pending the HyperCore live loop and campaign."
     }
   ],
   "g1": {
@@ -50,7 +52,8 @@
       "id": "activation",
       "name": "Live activation: intent, accepted order and independent observation match",
       "status": "not-run",
-      "evidence": "Waiting on testnet funding (G1)."
+      "evidence": "Waiting on testnet funding (G1).",
+      "note": "Partial, Elysium side only (desk 0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b, test mandate 2, runs/elysium-cases/): activation tx 0xf4a6a9e9ffc3d9be25ea1d76149dc71920156967a900efcf735caf1ec78c8da7 set ACTIVE with a WATCHER halt; ticks were refused (WATCHER_STALE) until the first watcher heartbeat; a watcher outage halted quoting again 46 s after the last heartbeat (tx 0x6fc648bea982579783723744e98192264f456078ea9694081030aa45b095be2f); owner pause went straight to PAUSED (tx 0x25e498d03824990ad6a4f0fb0f0030b7e38fe093dcc2bef7571c93b6489083fd). No exchange order: the HyperCore account is unfunded, so no order fit the balances."
     },
     {
       "id": "fill",
@@ -68,7 +71,8 @@
       "id": "stale",
       "name": "Stale feed: independent watchdog attempts cancel without new ticks",
       "status": "offline-tested",
-      "evidence": "contracts test_staleShutdownWithoutAnyNewTick; keeper outage integration test"
+      "evidence": "contracts test_staleShutdownWithoutAnyNewTick; keeper outage integration test",
+      "note": "Elysium testnet, desk 0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b, test mandate 2, runs/elysium-cases/: keeper stopped at 22:53:51 UTC (last tick 22:53:45); the watcher's poke halted quoting (STALE_REFERENCE) at 22:54:08 with no new tick, tx 0x6efa3b09ae8fdefcd6ccccc9a36ab9f8949a2629b730ab0b1b5ebfb5ae2a1243 sent by the watcher key. No orders were resting (unfunded account), so the cancel path and the exchange-side scheduled cancel were not exercised."
     },
     {
       "id": "volatility",
@@ -98,7 +102,8 @@
       "id": "outage",
       "name": "Keeper outage / restart: no new exposure before reconciliation",
       "status": "offline-tested",
-      "evidence": "keeper integration: restart recovery, keeper outage with exchange-side scheduled cancel"
+      "evidence": "keeper integration: restart recovery, keeper outage with exchange-side scheduled cancel",
+      "note": "Elysium side observed on testnet in the same run: keeper outage → timer-driven STALE halt; keeper restart → quoting resumed on its first fresh observation (tx 0x8b1f4bd36fd629ab225e081ac423d18d3220c3bc60e1d11fbf090e4d02e6fa14). Exchange-side order removal not exercised (no resting orders)."
     },
     {
       "id": "mismatch",
@@ -116,34 +121,44 @@
   "campaigns": [],
   "offline": [
     {
-      "suite": "Contracts (Foundry): lifecycle, reservations, signatures, shutdowns, vectors, fuzz",
+      "suite": "Contracts (Foundry)",
       "passed": 49,
       "failed": 0,
-      "command": "cd contracts && forge test"
+      "exitCode": 0,
+      "command": "forge test",
+      "verified": true
     },
     {
       "suite": "Reference quote engine, frozen vectors, policy",
       "passed": 15,
       "failed": 0,
-      "command": "pnpm --filter @staple/reference test"
+      "exitCode": 0,
+      "command": "pnpm --filter @staple/reference test",
+      "verified": true
     },
     {
       "suite": "Keeper: local node + exchange test double, SDK signing vectors",
-      "passed": 20,
+      "passed": 21,
       "failed": 0,
-      "command": "pnpm --filter @staple/keeper test"
+      "exitCode": 0,
+      "command": "pnpm --filter @staple/keeper test",
+      "verified": true
     },
     {
       "suite": "Watcher reconciliation, guard signing, keystore",
       "passed": 7,
       "failed": 0,
-      "command": "cd watcher && python -m pytest"
+      "exitCode": 0,
+      "command": "C:\\Users\\DELL\\Desktop\\staple/.venv/Scripts/python.exe -m pytest tests -q -p no:cacheprovider --basetemp=../.test-tmp/watcher",
+      "verified": true
     },
     {
       "suite": "Sampler metric computation",
       "passed": 4,
       "failed": 0,
-      "command": "cd sampler && python -m pytest"
+      "exitCode": 0,
+      "command": "C:\\Users\\DELL\\Desktop\\staple/.venv/Scripts/python.exe -m pytest test_metrics.py -q -p no:cacheprovider --basetemp=../.test-tmp/sampler",
+      "verified": true
     }
   ],
   "limitations": [
