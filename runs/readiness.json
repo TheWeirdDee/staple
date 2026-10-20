@@ -1,0 +1,70 @@
+{
+  "ranAt": "2026-10-20T08:31:05.869Z",
+  "checks": [
+    {
+      "name": "Elysium chain ID",
+      "ok": true,
+      "result": 99801
+    },
+    {
+      "name": "Hyperliquid testnet spot metadata",
+      "ok": true,
+      "result": {
+        "markets": 1339
+      }
+    },
+    {
+      "name": "DEPLOYER Elysium balance",
+      "ok": true,
+      "result": {
+        "address": "0xAE23182e900A53043E7b10E7258AC9739758B92b",
+        "wei": "248775792285730000",
+        "funded": true
+      }
+    },
+    {
+      "name": "OPERATOR Elysium balance",
+      "ok": true,
+      "result": {
+        "address": "0xAdFf91146D916f80c9a50AaF316B87d0bd12718C",
+        "wei": "19115701663810000",
+        "funded": true
+      }
+    },
+    {
+      "name": "WATCHER Elysium balance",
+      "ok": true,
+      "result": {
+        "address": "0x1Acf1A332eEeC79A69D3C83A3E5582e5d425ACDb",
+        "wei": "59285357609500000",
+        "funded": true
+      }
+    },
+    {
+      "name": "OWNER Elysium balance",
+      "ok": true,
+      "result": {
+        "address": "0x7C7e3662afeA282c27bf24329D915C02d4746550",
+        "wei": "19866896970140000",
+        "funded": true
+      }
+    },
+    {
+      "name": "Owner Hyperliquid spot balances",
+      "ok": true,
+      "result": {
+        "balances": [],
+        "usdcBalance": "0",
+        "funded": false
+      }
+    },
+    {
+      "name": "Keystore configured",
+      "ok": true
+    },
+    {
+      "name": "Deployment record exists",
+      "ok": true
+    }
+  ]
+}
