@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { POLICY_FIELDS, diffPolicies, parseScaled, type Policy } from '@staple/reference';
 import { Badge, ExtLink, LoadError, Meter, Notice, SectionHead, Skeleton, Stat, StateBadge, Term } from '../components/ui';
 import { explorerAddr, explorerTx, hlAccount, loadDeployment, type Deployment } from '../lib/config';
-import { blockTime, loadEvents, readMandate, readPolicy, REASONS, type DeskEvent, type MandateView, NotFound } from '../lib/desk';
+import { blockTime, loadEvents, readMandate, readPolicy, REASONS, decisionReason, type DeskEvent, type MandateView, NotFound } from '../lib/desk';
 import { hl, cloidHex, type HlOpenOrder } from '../lib/hl';
 import { toRefPolicy } from '../lib/policy';
 import { ago, fmtE8, fmtPx, fmtSigned, shortAddr, shortHash, utc } from '../lib/format';
@@ -187,7 +187,7 @@ function DecisionStrip({ v, events, now }: { v: MandateView; events?: DeskEvent[
     );
   }
   const a = last.args;
-  const r = REASONS[Number(a.reason)] ?? { code: `#${a.reason}`, text: '' };
+  const r = decisionReason(a, v.orders.length);
   const p = toRefPolicy(v.policy);
   const inv = BigInt(a.inventoryE8);
   const invPct = p.exposure.maxBaseE8 > p.exposure.minBaseE8 ? Number(((inv - p.exposure.minBaseE8) * 100n) / (p.exposure.maxBaseE8 - p.exposure.minBaseE8)) : 0;
@@ -558,7 +558,7 @@ function HistorySection({ events, error, pct }: { events?: DeskEvent[]; error?: 
             <span>
               {e.name === 'Decision' ? (
                 <>
-                  <strong>{REASONS[Number(e.args.reason)]?.code}</strong>: {REASONS[Number(e.args.reason)]?.text}. Mid {fmtPx(BigInt(e.args.midE8))}, ref age{' '}
+                  <strong>{decisionReason(e.args).code}</strong>: {decisionReason(e.args).text}. Mid {fmtPx(BigInt(e.args.midE8))}, ref age{' '}
                   {(Number(e.args.refAgeMs) / 1000).toFixed(1)} s, skew {Number(e.args.skewBps)} bps, {Number(e.args.placed)} placed / {Number(e.args.cancelled)} cancelled.
                 </>
               ) : (
