@@ -6,8 +6,9 @@
   "scripts": {
     "test": "vitest run",
     "start": "tsx src/main.ts",
-    "deploy": "tsx src/deploy.ts",
-    "probe": "tsx src/probe.ts"
+    "deploy": "tsx src/ops.ts deploy",
+    "probe": "tsx src/ops.ts balances",
+    "build": "tsc --noEmit"
   },
   "dependencies": {
     "@msgpack/msgpack": "3.0.0-beta2",
