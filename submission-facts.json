@@ -11,9 +11,23 @@
     {
       "id": "contracts-deployed",
       "claim": "MandateRegistry, StapleDesk and libraries are deployed on Elysium testnet (chain 99801)",
-      "status": "planned",
-      "evidence": "runs/deployment-testnet.json",
-      "limitation": "Waiting on testnet gas for the deployer address."
+      "status": "testnet-verified",
+      "evidence": "runs/deployment-testnet.json (registry 0x5accedcba9a4e5af62d0863a0d500f1179fae220, desk 0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b, block 10723281), runs/ops-log.jsonl",
+      "limitation": "Deployed and mandate 1 created with a fee deposit. Mandate 1 stays a draft (not quoting) until the owner account holds HyperCore testnet funds."
+    },
+    {
+      "id": "hosted-services",
+      "claim": "Keeper, watcher and sampler run on GitHub Actions; the watcher sends on-chain heartbeats for mandate 1 from the hosted runner",
+      "status": "testnet-verified",
+      "evidence": "Workflow run https://github.com/TheWeirdDee/staple/actions/runs/39075096371; heartbeat tx 0xa17f9e4e471c0fbdd9185a1e082dcbd2f8565bfa0fdff49cf634826c8befa795 (Elysium testnet block 10729938)",
+      "limitation": "Elysium side only. The keeper idles because mandate 1 is a draft, and heartbeats are every 120 s to conserve testnet gas. Runs hand over every ~5h40m with a short gap."
+    },
+    {
+      "id": "elysium-safety-paths",
+      "claim": "On Elysium testnet: activation fails closed until the watcher checks in; a keeper outage is halted by the watcher's timer-driven poke with no new tick; a watcher outage halts quoting after its 45 s timeout; quoting resumes only on a fresh observation; owner pause is immediate when nothing rests",
+      "status": "testnet-verified",
+      "evidence": "runs/elysium-cases/ (events.json exported from desk 0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b, test mandate 2; phases.jsonl; keeper and watcher logs); scripts/elysium-cases.sh",
+      "limitation": "Elysium side only. The test mandate's HyperCore account is unfunded, so no order was placed and no cancellation, fill or exchange-side scheduled cancel was exercised. The keeper and watcher ran on one host for this run."
     },
     {
       "id": "g1-live-loop",
@@ -47,7 +61,7 @@
       "id": "stale-without-ticks",
       "claim": "Stale-data and expiry shutdowns are initiated by a timer (permissionless poke called by the watcher) even when no observation arrives",
       "status": "implemented-unverified",
-      "evidence": "contracts/test/StapleDesk.t.sol test_staleShutdownWithoutAnyNewTick, test_expiryWithoutTick; keeper/test/integration.test.ts keeper outage",
+      "evidence": "contracts/test/StapleDesk.t.sol test_staleShutdownWithoutAnyNewTick, test_expiryWithoutTick; keeper/test/integration.test.ts keeper outage; Elysium testnet: runs/elysium-cases (watcher poke tx 0x6efa3b09ae8fdefcd6ccccc9a36ab9f8949a2629b730ab0b1b5ebfb5ae2a1243)",
       "limitation": "Requires the watcher (or anyone) to send the poke transaction; the exchange-side scheduled cancel is the second line."
     },
     {
@@ -90,7 +104,7 @@
       "claim": "Public mandate page separates intended, observed and unconfirmed orders, shows inventory, reservations, PnL/fees, thresholds, watcher health, residual risk and history from on-chain decisions",
       "status": "implemented-unverified",
       "evidence": "web/src/pages/Mandate.tsx",
-      "limitation": "Not yet exercised against a live deployment."
+      "limitation": "Reads the live testnet deployment (mandate 1, draft) in a browser. Owner flows are verified only against a local node; not yet exercised against the testnet deployment."
     },
     {
       "id": "campaign",
