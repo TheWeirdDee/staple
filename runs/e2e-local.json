@@ -1,5 +1,5 @@
 {
-  "ranAt": "2026-10-17T13:26:32.064Z",
+  "ranAt": "2026-10-19T07:53:47.632Z",
   "results": [
     {
       "step": "wallet connects through the injected provider",
@@ -96,6 +96,6 @@
       "detail": ""
     }
   ],
-  "scope": "Real contracts on a local node (anvil), real keeper against the exchange TEST DOUBLE, built web app in Chromium with an injected test wallet; Hyperliquid testnet reached from the browser for reads and the (expected-to-fail) agent approval.",
-  "command": "npx tsx web/e2e/owner-flow.ts"
+  "scope": "Real contracts on local Anvil, real keeper against an exchange TEST DOUBLE, Vite development web app in Chromium with an injected test wallet. Live Hyperliquid calls only exercise reads and expected agent approval failure; this is not live trading verification.",
+  "command": "pnpm e2e"
 }
