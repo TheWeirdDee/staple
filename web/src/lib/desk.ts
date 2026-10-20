@@ -1,11 +1,13 @@
 import { createPublicClient, http, parseEventLogs, type Hex, type Log } from 'viem';
 import { MandateRegistryAbi, StapleDeskAbi } from '@staple/reference/abi';
-import { elysiumTestnet, type Deployment } from './config';
+import { elysiumTestnet, HAS_MULTICALL, type Deployment } from './config';
 
 // cacheTime 0: history loads must read the true head, not a block number cached by an earlier page.
+// The public Elysium RPC rate-limits per call, so contract reads issued together go out as one Multicall3 call.
 export const pub = createPublicClient({
   chain: elysiumTestnet,
   transport: http(undefined, { timeout: 20_000, retryCount: 2 }),
+  batch: { multicall: HAS_MULTICALL },
   cacheTime: 0,
 });
 
@@ -58,6 +60,24 @@ export const REASONS: Record<number, { code: string; text: string }> = {
   19: { code: 'WAITING_RECONCILE', text: 'Waiting for fills or confirmations to reconcile before quoting' },
   20: { code: 'CANCEL_RETRY', text: 'A cancellation was not confirmed in time and was requested again' },
 };
+
+/**
+ * Reason shown for a Decision event. A quoting decision that placed nothing is ambiguous from the event alone:
+ * either the existing orders still match the ladder, or no order fits the account balances and policy limits.
+ * Pass `liveOrders` when the current order count is known (the latest decision) to resolve it.
+ */
+export function decisionReason(args: { reason: number | bigint; placed: number | bigint }, liveOrders?: number) {
+  const n = Number(args.reason);
+  if ((n === 1 || n === 3) && Number(args.placed) === 0) {
+    if (liveOrders === 0) {
+      return { code: `${REASONS[n].code} · NOTHING FITS`, text: 'The ladder was computed, but no order fits the account balances and policy limits, so nothing is quoted' };
+    }
+    if (liveOrders === undefined) {
+      return { code: REASONS[n].code, text: 'Ladder computed; no new order (existing orders still match, or nothing fits the balances and limits)' };
+    }
+  }
+  return REASONS[n] ?? { code: `#${n}`, text: '' };
+}
 
 const read = <T,>(address: Hex, abi: any, functionName: string, args: unknown[]) =>
   pub.readContract({ address, abi, functionName, args } as any) as Promise<T>;
@@ -135,7 +155,7 @@ export async function readMandate(dep: Deployment, id: bigint): Promise<MandateV
   ]);
   if (identity.owner === '0x0000000000000000000000000000000000000000') throw new NotFound(`Mandate ${id} does not exist`);
   const [policy, ...orders] = await Promise.all([
-    read<PolicyView>(dep.registry, MandateRegistryAbi, 'getPolicy', [id, Number(activeVersion)]),
+    policyVersion(dep, id, Number(activeVersion)),
     ...cloids.map((c) => read<any>(dep.desk, StapleDeskAbi, 'getOrder', [c])),
   ]);
   return {
@@ -156,6 +176,19 @@ export async function readMandate(dep: Deployment, id: bigint): Promise<MandateV
 }
 
 export class NotFound extends Error {}
+
+// A published policy version never changes, so each one is read once per page load.
+const policies = new Map<string, Promise<PolicyView>>();
+function policyVersion(dep: Deployment, id: bigint, version: number): Promise<PolicyView> {
+  const k = `${dep.registry}:${id}:${version}`;
+  let p = policies.get(k);
+  if (!p) {
+    p = read<PolicyView>(dep.registry, MandateRegistryAbi, 'getPolicy', [id, version]);
+    p.catch(() => policies.delete(k));
+    policies.set(k, p);
+  }
+  return p;
+}
 
 export async function readPolicy(dep: Deployment, id: bigint, version: number) {
   const [p, created, effective] = await Promise.all([
