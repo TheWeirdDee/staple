@@ -1,10 +1,11 @@
+import { fileURLToPath } from 'node:url';
 // Builds web/public/evidence/index.json from committed run records. Only files under runs/ and the claim
 // ledger are used; nothing is typed in by hand here, so the site cannot claim more than the records show.
 import { existsSync, readdirSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { execSync } from 'node:child_process';
 import { join } from 'node:path';
 
-const root = new URL('..', import.meta.url).pathname;
+const root = fileURLToPath(new URL('..', import.meta.url));
 const j = (p) => JSON.parse(readFileSync(join(root, p), 'utf8'));
 const maybe = (p) => (existsSync(join(root, p)) ? j(p) : null);
 
@@ -19,13 +20,13 @@ const campaigns = existsSync(join(root, 'runs'))
   ? readdirSync(join(root, 'runs')).filter((d) => d.startsWith('campaign-') && existsSync(join(root, 'runs', d, 'results.json'))).map((d) => j(`runs/${d}/results.json`))
   : [];
 
-const offlineOk = offline && offline.suites.every((s) => s.failed === 0 && s.passed > 0);
+const offlineOk = offline && offline.suites.length === 5 && offline.suites.every((s) => s.failed === 0 && s.passed > 0 && (s.exitCode === undefined || s.exitCode === 0));
 const verified = (id) => fact(id)?.status === 'testnet-verified';
-const anyCaseOnTestnet = cases.some((c) => c.status === 'testnet-verified');
+const g3OnTestnet = ['stale', 'delayed-cancel', 'outage'].every((id) => cases.some((c) => c.id === id && c.status === 'testnet-verified'));
 const gates = [
-  { id: 'G1', title: 'One real testnet place/cancel/outcome loop independently observed', status: verified('g1-live-loop') ? 'met' : 'not-met', evidence: verified('g1-live-loop') ? 'runs/g1/manifest.json' : fact('g1-live-loop').limitation },
-  { id: 'G2', title: 'Reservation, precision, access-control and idempotency tests pass', status: offlineOk ? 'met' : 'not-met', evidence: offline ? `${offline.suites.reduce((a, s) => a + s.passed, 0)} offline tests passed, 0 failed at ${offline.commit.slice(0, 10)}` : 'not run' },
-  { id: 'G3', title: 'Stale-data shutdown works without fresh ticks; late fills and cancel failures reconcile', status: offlineOk ? (anyCaseOnTestnet ? 'met' : 'partial') : 'not-met', evidence: 'Shown offline with real contracts on a local node and the exchange test double; not yet observed on testnet.' },
+  { id: 'G1', title: 'One real testnet place/cancel/outcome loop independently observed', status: verified('g1-live-loop') && g1?.status === 'testnet-verified' && dep ? 'met' : 'not-met', evidence: verified('g1-live-loop') ? 'runs/g1/manifest.json' : fact('g1-live-loop').limitation },
+  { id: 'G2', title: 'Reservation, precision, access-control and idempotency tests pass', status: offlineOk ? 'met' : 'not-met', evidence: offline ? `${offline.suites.reduce((a, s) => a + s.passed, 0)} offline tests passed, ${offline.suites.reduce((a, s) => a + s.failed, 0)} failed; ${offline.suites.filter((s) => s.exitCode !== undefined && s.exitCode !== 0).length} suite command errors at ${offline.commit.slice(0, 10)}` : 'not run' },
+  { id: 'G3', title: 'Stale-data shutdown works without fresh ticks; late fills and cancel failures reconcile', status: offlineOk ? (g3OnTestnet ? 'met' : 'partial') : 'not-met', evidence: 'Shown offline with real contracts on a local node and the exchange test double; not yet observed on testnet.' },
   {
     id: 'G4',
     title: 'Pause/revoke UI distinguishes requested and confirmed external outcomes',
@@ -35,7 +36,7 @@ const gates = [
       : 'Implemented; not yet exercised in a browser.',
   },
   { id: 'G5', title: 'Public evidence contains failures, unknowns, actual duration and trust limits', status: campaigns.some((c) => c.status === 'complete') ? 'met' : 'partial', evidence: campaigns.length ? 'Campaign results with interruptions and limitations published.' : 'Evidence page and limits published; no campaign has run yet.' },
-  { id: 'G6', title: 'Submission facts align with what is deployed and demonstrated', status: 'partial', evidence: 'submission-facts.json maintained; README, site and submission draft generated from it. Final alignment check pending deployment.' },
+  { id: 'G6', title: 'Submission facts align with what is deployed and demonstrated', status: 'partial', evidence: 'Elysium deployment is recorded. Final alignment check remains pending the HyperCore live loop and campaign.' },
 ];
 
 let commit = 'uncommitted';
