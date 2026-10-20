@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'node:url';
 /**
  * Operator CLI for the testnet deployment. Every command acts on testnet only and prints what it did, with
  * transaction hashes and exchange responses, so the run can be audited afterwards.
@@ -18,7 +19,7 @@ import { deployAll, policyArgs, saveDeployment, type Deployment } from './deploy
 import { HyperliquidClient } from './hl/client.js';
 import { loadKeystore, writeKeystore, type KeySet } from './keystore.js';
 
-const ROOT = new URL('../../', import.meta.url).pathname;
+const ROOT = fileURLToPath(new URL('../../', import.meta.url));
 const DEP_PATH = join(ROOT, 'runs', 'deployment-testnet.json');
 const WEB_DEP_PATH = join(ROOT, 'web', 'public', 'deployment.json');
 const OPS_LOG = join(ROOT, 'runs', 'ops-log.jsonl');
@@ -68,7 +69,7 @@ async function main() {
     case 'keystore': {
       // Builds the encrypted keystore used by the hosted services, with a random 256-bit passphrase.
       const src = JSON.parse(readFileSync(args[0], 'utf8'));
-      const pick = Object.fromEntries(['operator', 'agent', 'watcher', 'guard', 'owner', 'taker'].map((n) => [n, src[n].key]));
+      const pick = Object.fromEntries(['deployer', 'operator', 'agent', 'watcher', 'guard', 'owner', 'taker'].filter((n) => src[n]).map((n) => [n, src[n].key ?? src[n]]));
       const out = args[1];
       const pass = randomBytes(32).toString('base64url');
       writeKeystore(out, pick as KeySet, pass);
@@ -81,9 +82,10 @@ async function main() {
         const a = addr(K[n]);
         const [eth, spot] = await Promise.all([
           pub.getBalance({ address: a }),
-          hlFor(K[n]).spotBalances(a).catch(() => ({ balances: [] })),
+          hlFor(K[n]).spotBalances(a).catch(() => null),
         ]);
-        console.log(n.padEnd(9), a, `elysium ${Number(eth) / 1e18} HYPE`, 'hypercore', JSON.stringify(spot.balances.map((b) => `${b.coin}:${b.total}`)));
+        console.log(n.padEnd(9), a, `elysium ${Number(eth) / 1e18} HYPE`, 'hypercore', spot ? JSON.stringify(spot.balances.map((b) => `${b.coin}:${b.total}`)) : 'UNAVAILABLE (lookup failed)');
+        if (!spot) process.exitCode = 1;
       }
       break;
     }
@@ -91,9 +93,16 @@ async function main() {
       // Distributes testnet HYPE from the funded deployer to the service and owner keys.
       const src = K.deployer ?? (process.env.STAPLE_DEPLOYER_KEY as Hex);
       const amount = parseEther(args[0] ?? '0.2');
-      for (const n of ['operator', 'watcher', 'owner'] as const) {
+      const allowed = ['operator', 'watcher', 'owner'] as const;
+      const recipients = args.length > 1 ? args.slice(1) : [...allowed];
+      if (recipients.some((role) => !allowed.includes(role as typeof allowed[number]))) {
+        throw new Error('fund-gas recipients must be operator, watcher or owner');
+      }
+      if (amount <= 0n) throw new Error('fund-gas amount must be positive');
+      for (const n of [...new Set(recipients)]) {
         const hash = await wallet(src).sendTransaction({ to: addr(K[n]), value: amount, chain: elysiumTestnet, account: wallet(src).account });
-        await pub.waitForTransactionReceipt({ hash });
+        const receipt = await pub.waitForTransactionReceipt({ hash });
+        if (receipt.status !== 'success') throw new Error(`fund-gas reverted: ${hash}`);
         log('fund-gas', { to: n, address: addr(K[n]), amount: args[0] ?? '0.2', tx: hash });
       }
       break;
@@ -116,8 +125,10 @@ async function main() {
       break;
     }
     case 'create-mandate': {
+      // --no-feature creates a test mandate without changing the one the site and hosted services follow.
       const d = dep();
-      const hours = BigInt(args[0] ?? '96');
+      const feature = !args.includes('--no-feature');
+      const hours = BigInt(args.find((a) => /^\d+$/.test(a)) ?? '96');
       const block = await pub.getBlock();
       const policy = policyArgs(campaignPolicy(block.timestamp + hours * 3600n));
       const r = await write(K.owner, d.registry, MandateRegistryAbi, 'createMandate', [policy, addr(K.operator), addr(K.watcher), addr(K.owner)]);
@@ -125,11 +136,13 @@ async function main() {
       await write(K.owner, d.feeToken, TestFeeTokenAbi, 'faucet', []);
       await write(K.owner, d.feeToken, TestFeeTokenAbi, 'approve', [d.registry, 50_000_000n]);
       const f = await write(K.owner, d.registry, MandateRegistryAbi, 'depositFees', [id, 50_000_000n]);
-      d.featuredMandate = id.toString();
-      d.ownerAccount = addr(K.owner);
-      saveDeployment(DEP_PATH, d as any);
-      saveDeployment(WEB_DEP_PATH, d as any);
-      log('create-mandate', { id, tx: r.hash, feeDepositTx: f.hash, expiryHours: hours });
+      if (feature) {
+        d.featuredMandate = id.toString();
+        d.ownerAccount = addr(K.owner);
+        saveDeployment(DEP_PATH, d as any);
+        saveDeployment(WEB_DEP_PATH, d as any);
+      }
+      log('create-mandate', { id, tx: r.hash, feeDepositTx: f.hash, expiryHours: hours, featured: feature });
       break;
     }
     case 'owner-trade': {
