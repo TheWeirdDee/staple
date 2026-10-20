@@ -48,9 +48,15 @@ while [ "$(date +%s)" -lt "$end" ]; do
   if [ -n "${STAPLE_PUBLISH:-}" ] && [ $(( minute % 30 )) -eq 0 ]; then "$ROOT/deploy/publish-data.sh" partial || true; fi
 done
 
+# Services run under npx/tsx wrappers, so signal every descendant, not just the supervisor's direct child.
+killtree() { # pid
+  local c
+  for c in $(pgrep -P "$1" 2>/dev/null); do killtree "$c"; done
+  kill -TERM "$1" 2>/dev/null
+}
 touch "$STATE/.stop"
 for n in campaign keeper watcher sampler; do
-  [ -f "$STATE/$n.pid" ] && pkill -TERM -P "$(cat "$STATE/$n.pid")" 2>/dev/null; kill "$(cat "$STATE/$n.pid" 2>/dev/null)" 2>/dev/null
+  [ -f "$STATE/$n.pid" ] && killtree "$(cat "$STATE/$n.pid")"
 done
 sleep 5
 [ -n "${STAPLE_PUBLISH:-}" ] && "$ROOT/deploy/publish-data.sh" final || true
