@@ -25,6 +25,16 @@ const events = () =>
     .map((l) => JSON.parse(l));
 
 describe('keeper live loop against the exchange double', () => {
+  it('a mandate that was never activated steps cleanly and places nothing', async () => {
+    h = await startHarness(port++);
+    await h.heartbeat();
+    const k = h.newKeeper();
+    await k.step();
+    await k.step();
+    expect(h.fake.placeCalls).toBe(0);
+    expect(events().some((e) => e.kind === 'step_error')).toBe(false);
+  }, 60_000);
+
   it('places intents once, reconciles fills exactly once and keeps reservations conservative', async () => {
     await boot();
     const k = h.newKeeper();
