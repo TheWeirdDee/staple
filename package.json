@@ -4,9 +4,14 @@
   "type": "module",
   "packageManager": "pnpm@10.28.0",
   "scripts": {
-    "test:offline": "pnpm -r --filter ./reference --filter ./keeper --filter ./watcher test && cd contracts && forge test",
+    "test:offline": "node scripts/offline-tests.mjs",
     "vectors": "pnpm --filter ./reference vectors",
-    "build": "pnpm -r build"
+    "build": "pnpm -r build",
+    "dev": "pnpm --filter @staple/web dev",
+    "evidence": "node scripts/publish-evidence.mjs",
+    "e2e": "pnpm --filter @staple/web e2e",
+    "check:readiness": "node scripts/readiness.mjs",
+    "test:tooling": "node --test scripts/evidence.test.mjs"
   },
   "engines": {
     "node": ">=22"
