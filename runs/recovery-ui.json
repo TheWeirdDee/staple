@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-20T08:38:52.683Z",
+  "scope": "Read-only browser inspection against Elysium testnet mandate 1. No wallet connection, approval, activation, or trading.",
+  "results": [
+    {
+      "step": "Real mandate 1 shows DRAFT from the restored testnet deployment",
+      "ok": true
+    },
+    {
+      "step": "Owner management route correctly requires the owner wallet before exposing actions",
+      "ok": true
+    },
+    {
+      "step": "No browser runtime errors",
+      "ok": true
+    }
+  ],
+  "errors": []
+}
