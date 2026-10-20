@@ -1,0 +1,91 @@
+{
+  "checkedAt": "2026-10-20T08:28:54.481Z",
+  "chainId": 99801,
+  "roles": {
+    "deployer": {
+      "address": "0xAE23182e900A53043E7b10E7258AC9739758B92b",
+      "elysiumWei": "298777893195800000"
+    },
+    "agent": {
+      "address": "0x216E97665a3260bf23F0Dc4ED51Bf0879136efC8",
+      "elysiumWei": "0"
+    },
+    "taker": {
+      "address": "0x20FAB238078Cc82D7dB0AeBb4Bb1a4756fB05846",
+      "elysiumWei": "0"
+    },
+    "owner": {
+      "address": "0x7C7e3662afeA282c27bf24329D915C02d4746550",
+      "elysiumWei": "19866896970140000"
+    },
+    "watcher": {
+      "address": "0x1Acf1A332eEeC79A69D3C83A3E5582e5d425ACDb",
+      "elysiumWei": "9291593505130000"
+    },
+    "operator": {
+      "address": "0xAdFf91146D916f80c9a50AaF316B87d0bd12718C",
+      "elysiumWei": "19115701663810000"
+    },
+    "guard": {
+      "address": "0x5193EACe0A15c113E85ef42A87659c21000290B1",
+      "elysiumWei": "0"
+    }
+  },
+  "deployed": {
+    "registry": {
+      "address": "0x5accedcba9a4e5af62d0863a0d500f1179fae220",
+      "codeBytes": 14348
+    },
+    "desk": {
+      "address": "0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b",
+      "codeBytes": 23906
+    },
+    "feeToken": {
+      "address": "0xd9183d47cd4195cd67f3ccbf3302dfa940826efd",
+      "codeBytes": 1295
+    },
+    "QuoteEngine": {
+      "address": "0x8ccbd1cd79529c6224c3b677fa1ba9b99893b106",
+      "codeBytes": 3023
+    },
+    "DeskAccounting": {
+      "address": "0xc52fd56c7928d053e601fc7e803e6ae9212200ec",
+      "codeBytes": 2019
+    },
+    "DeskOrders": {
+      "address": "0xce9c9c042594f763147cf9dd88c93ba9c81909da",
+      "codeBytes": 9941
+    }
+  },
+  "mandateId": "1",
+  "runtime": {
+    "state": 0,
+    "halt": 0,
+    "agentRevokedObserved": false,
+    "activeVersion": 0,
+    "activatedAt": "0",
+    "lastSeq": "0",
+    "lastSourceTimeMs": "0",
+    "lastObsAt": "0",
+    "lastOutcomeSeq": "0",
+    "lastWatcherBeat": "1792484860",
+    "unreconciledSince": "0",
+    "calmUntil": "0",
+    "volWindowStart": "0",
+    "volWindowMidE8": "0"
+  },
+  "identity": {
+    "owner": "0x7C7e3662afeA282c27bf24329D915C02d4746550",
+    "operator": "0xAdFf91146D916f80c9a50AaF316B87d0bd12718C",
+    "guardian": "0x1Acf1A332eEeC79A69D3C83A3E5582e5d425ACDb",
+    "hlAccount": "0x7C7e3662afeA282c27bf24329D915C02d4746550",
+    "createdAt": "1792275222",
+    "latestVersion": 1,
+    "pendingVersion": 0,
+    "pendingEffectiveAt": "0"
+  },
+  "liveOrders": [],
+  "ownerSpot": {
+    "balances": []
+  }
+}
