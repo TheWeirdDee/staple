@@ -23,6 +23,8 @@ jobs:
         with:
           python-version: '3.13'
       - run: pnpm install --frozen-lockfile
+      - name: Evidence gate regression tests
+        run: pnpm test:tooling
       - name: Contracts (forge)
         run: cd contracts && forge test
       - name: ABI export is up to date
@@ -33,7 +35,7 @@ jobs:
         run: pnpm --filter @staple/keeper test
       - name: Watcher and sampler
         run: |
-          pip install -r watcher/requirements.txt -r sampler/requirements.txt
+          pip install -r python-requirements.lock
           cd watcher && python -m pytest -q && cd ../sampler && python -m pytest -q
-      - name: Web typecheck and build
-        run: pnpm --filter @staple/web build
+      - name: Typecheck all packages and build web
+        run: pnpm build
