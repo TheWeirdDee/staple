@@ -136,6 +136,11 @@ export class Keeper {
     await this.checkBudget();
 
     let rt = await this.desk.runtime(this.id);
+    // A draft mandate has no orders and the desk rejects ticks for it, so wait for the owner to activate.
+    if (rt.state === 'DRAFT') {
+      rep.skippedReason = 'mandate is a draft: waiting for owner activation';
+      return rep;
+    }
     let live = await this.desk.liveOrders(this.id);
     const outs: Outcome[] = [];
 
@@ -325,8 +330,10 @@ export class Keeper {
   private reportedChecked = new Set<string>();
 
   private async fetchFills(rt: Runtime): Promise<NormFill[]> {
+    // A mandate that was never activated has placed nothing, so there are no fills of its own to read.
+    if (rt.activatedAt === 0n) return [];
     const activatedMs = Number(rt.activatedAt) * 1000;
-    const start = Math.max(activatedMs - 60_000, (this.wal.state.lastFillPollMs || activatedMs) - this.cfg.fillLookbackMs);
+    const start = Math.max(0, activatedMs - 60_000, (this.wal.state.lastFillPollMs || activatedMs) - this.cfg.fillLookbackMs);
     const fills = await this.ex.fillsSince(start);
     this.wal.state.lastFillPollMs = this.now();
     return fills.filter((f) => f.coin === this.cfg.market.coin);
