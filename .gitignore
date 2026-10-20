@@ -8,6 +8,8 @@ contracts/broadcast/
 !.env.example
 *.log
 .secrets/
+/staple-credentials.zip
+/staple-public.zip
 keeper/state/
 watcher/state/
 sampler/state/
@@ -16,3 +18,14 @@ web/playwright-report/
 .DS_Store
 __pycache__/
 .pytest_cache/
+
+.pnpm-store/
+.test-tmp/
+.venv/
+pytest-cache-files-*/
+.tools/
+web/e2e/out/
+web/public/e2e-deployment.json
+state/
+
+github-secrets/
