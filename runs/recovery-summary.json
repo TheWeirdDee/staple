@@ -1,0 +1,126 @@
+{
+  "checkedAt": "2026-10-20T08:39:48.406492+00:00",
+  "credentials": {
+    "directory": ".secrets/",
+    "manifestEntriesVerified": 73,
+    "keyAddressPairsVerified": 7,
+    "encryptedRolesVerified": 6,
+    "credentialArchiveMovedInsideSecrets": true,
+    "windowsPermissions": "Current user only; checked on keys.json and credential archive",
+    "trackedSecretFiles": 0,
+    "localPreCommitGuard": "scripts/check-secrets.mjs; verified with dummy-only blocked/allowed cases"
+  },
+  "cloudSource": "c6aaddf961822bf08c5d64b522cc64aa8313340c",
+  "cloudReconciliation": "29 paths reconciled in working tree; previous local files retained under .test-tmp/cloud-merge/local-backup",
+  "deployment": "Verified bytecode at registry, desk, fee token, QuoteEngine, DeskAccounting and DeskOrders on chain 99801",
+  "mandate1": {
+    "state": "DRAFT",
+    "liveOrders": 0
+  },
+  "watcherTopup": {
+    "amountTestHype": "0.05",
+    "tx": "0xedb1547e717f3f8eca5c6f97bbd9bf3d96461ddbec3cbafa5eecc0ceabf39cc9",
+    "receiptConfirmed": true
+  },
+  "verification": {
+    "build": "passed",
+    "offlinePassed": 96,
+    "offlineFailed": 0,
+    "evidenceToolingPassed": 4,
+    "ownerFlowBrowserPassed": 23,
+    "readOnlyLiveBrowser": [
+      {
+        "step": "Real mandate 1 shows DRAFT from the restored testnet deployment",
+        "ok": true
+      },
+      {
+        "step": "Owner management route correctly requires the owner wallet before exposing actions",
+        "ok": true
+      },
+      {
+        "step": "No browser runtime errors",
+        "ok": true
+      }
+    ]
+  },
+  "readinessChecks": [
+    {
+      "name": "Elysium chain ID",
+      "ok": true,
+      "result": 99801
+    },
+    {
+      "name": "Hyperliquid testnet spot metadata",
+      "ok": true,
+      "result": {
+        "markets": 1339
+      }
+    },
+    {
+      "name": "DEPLOYER Elysium balance",
+      "ok": true,
+      "result": {
+        "address": "0xAE23182e900A53043E7b10E7258AC9739758B92b",
+        "wei": "248775792285730000",
+        "funded": true
+      }
+    },
+    {
+      "name": "OPERATOR Elysium balance",
+      "ok": true,
+      "result": {
+        "address": "0xAdFf91146D916f80c9a50AaF316B87d0bd12718C",
+        "wei": "19115701663810000",
+        "funded": true
+      }
+    },
+    {
+      "name": "WATCHER Elysium balance",
+      "ok": true,
+      "result": {
+        "address": "0x1Acf1A332eEeC79A69D3C83A3E5582e5d425ACDb",
+        "wei": "59285357609500000",
+        "funded": true
+      }
+    },
+    {
+      "name": "OWNER Elysium balance",
+      "ok": true,
+      "result": {
+        "address": "0x7C7e3662afeA282c27bf24329D915C02d4746550",
+        "wei": "19866896970140000",
+        "funded": true
+      }
+    },
+    {
+      "name": "Owner Hyperliquid spot balances",
+      "ok": true,
+      "result": {
+        "balances": [],
+        "usdcBalance": "0",
+        "funded": false
+      }
+    },
+    {
+      "name": "Keystore configured",
+      "ok": true
+    },
+    {
+      "name": "Deployment record exists",
+      "ok": true
+    }
+  ],
+  "hostedServices": {
+    "workflowActive": true,
+    "runningRun": 39373998709,
+    "localRealBotsStarted": false,
+    "githubSecretNamesConfirmed": [
+      "STAPLE_KEYSTORE_B64",
+      "STAPLE_KEYSTORE_PASSPHRASE"
+    ]
+  },
+  "blockers": [
+    "Owner Hyperliquid testnet spot USDC balance is zero. No agent approvals exist. G1, live approvals/revocation, exchange shutdown/recovery, campaign and live trading demo remain pending."
+  ],
+  "published": false
+}
