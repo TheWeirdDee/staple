@@ -5,7 +5,7 @@ import { join } from 'node:path';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 function git(...args) {
-  const result = spawnSync('git', args, { cwd: root, encoding: 'buffer' });
+  const result = spawnSync('git', args, { cwd: root, encoding: 'buffer', maxBuffer: 128 * 1024 * 1024 });
   if (result.status !== 0) throw new Error('Could not inspect Git content');
   return result.stdout;
 }
