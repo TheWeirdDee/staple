@@ -1,0 +1,13 @@
+{"t":1792616953358,"event":"connected"}
+{"t":1792617642785,"event":"connected"}
+{"t":1792618257974,"event":"connected"}
+{"t":1792618894064,"event":"connected"}
+{"t":1792619585798,"event":"connected"}
+{"t":1792619903284,"event":"disconnected","error":"no close frame received or sent"}
+{"t":1792619904695,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792619907104,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792619911488,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792619919819,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792619936224,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792619966466,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792619996820,"event":"connected"}
