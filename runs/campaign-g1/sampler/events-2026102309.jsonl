@@ -1,1 +1,13 @@
-{"t":1792746200969,"event":"connected"}
+{"t":1792746457828,"event":"start","coin":"PURR/USDC","network":"testnet","depth":10,"version":1}
+{"t":1792746458208,"event":"connected"}
+{"t":1792747154051,"event":"connected"}
+{"t":1792747821713,"event":"connected"}
+{"t":1792748470376,"event":"connected"}
+{"t":1792749162678,"event":"connected"}
+{"t":1792749211347,"event":"disconnected","error":"no close frame received or sent"}
+{"t":1792749212695,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792749215036,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792749219357,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792749227764,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792749244099,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792749274461,"event":"connected"}
