@@ -1,0 +1,83 @@
+{"t":1792787374004,"kind":"recovery","recovered":true,"live":0,"outcomes":0}
+{"t":1792787374267,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792787638836,"kind":"step_error","error":"Missing or invalid parameters.\nDouble check you have provided the correct parameters.\n\nURL: https://testnet-rpc.elysium.kinetiq.xyz\nRequest body: {\"method\":\"eth_call\",\"params\":[{\"data\":\"0x55a17aba0000000000000000000000000000000000000000000000000000000000000001\",\"to\":\"0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b\"},\"latest\"]}\n \nRaw Call Arguments:\n  to:    0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b\n  data:  0x55a17aba0000000000000000000000000000000000000000000000000000000000000001\n \nContract Call:\n "}
+{"t":1792787668906,"kind":"step_error","error":"Missing or invalid parameters.\nDouble check you have provided the correct parameters.\n\nURL: https://testnet-rpc.elysium.kinetiq.xyz\nRequest body: {\"method\":\"eth_call\",\"params\":[{\"data\":\"0x55a17aba0000000000000000000000000000000000000000000000000000000000000001\",\"to\":\"0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b\"},\"latest\"]}\n \nRaw Call Arguments:\n  to:    0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b\n  data:  0x55a17aba0000000000000000000000000000000000000000000000000000000000000001\n \nContract Call:\n "}
+{"t":1792787678854,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792787978887,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792787983864,"kind":"step_error","error":"Missing or invalid parameters.\nDouble check you have provided the correct parameters.\n\nURL: https://testnet-rpc.elysium.kinetiq.xyz\nRequest body: {\"method\":\"eth_call\",\"params\":[{\"data\":\"0x55a17aba0000000000000000000000000000000000000000000000000000000000000001\",\"to\":\"0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b\"},\"latest\"]}\n \nRaw Call Arguments:\n  to:    0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b\n  data:  0x55a17aba0000000000000000000000000000000000000000000000000000000000000001\n \nContract Call:\n "}
+{"t":1792788133893,"kind":"step_error","error":"Missing or invalid parameters.\nDouble check you have provided the correct parameters.\n\nURL: https://testnet-rpc.elysium.kinetiq.xyz\nRequest body: {\"method\":\"eth_call\",\"params\":[{\"data\":\"0x55a17aba0000000000000000000000000000000000000000000000000000000000000001\",\"to\":\"0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b\"},\"latest\"]}\n \nRaw Call Arguments:\n  to:    0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b\n  data:  0x55a17aba0000000000000000000000000000000000000000000000000000000000000001\n \nContract Call:\n "}
+{"t":1792788193916,"kind":"step_error","error":"Missing or invalid parameters.\nDouble check you have provided the correct parameters.\n\nURL: https://testnet-rpc.elysium.kinetiq.xyz\nRequest body: {\"method\":\"eth_call\",\"params\":[{\"data\":\"0x55a17aba0000000000000000000000000000000000000000000000000000000000000001\",\"to\":\"0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b\"},\"latest\"]}\n \nRaw Call Arguments:\n  to:    0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b\n  data:  0x55a17aba0000000000000000000000000000000000000000000000000000000000000001\n \nContract Call:\n "}
+{"t":1792788278926,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792788579005,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792788824166,"kind":"step_error","error":"Missing or invalid parameters.\nDouble check you have provided the correct parameters.\n\nURL: https://testnet-rpc.elysium.kinetiq.xyz\nRequest body: {\"method\":\"eth_call\",\"params\":[{\"data\":\"0x55a17aba0000000000000000000000000000000000000000000000000000000000000001\",\"to\":\"0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b\"},\"latest\"]}\n \nRaw Call Arguments:\n  to:    0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b\n  data:  0x55a17aba0000000000000000000000000000000000000000000000000000000000000001\n \nContract Call:\n "}
+{"t":1792788879047,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792789179038,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792789479098,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792789779114,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792790079153,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792790379190,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792790679224,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792790979226,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792791279265,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792791579309,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792791879318,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792792179458,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792792479389,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792792779430,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792793079437,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792793379457,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792793679487,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792793979512,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792794279557,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792794579592,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792794879737,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792795179685,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792795479687,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792795779703,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792796079769,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792796379804,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792796679847,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792796979880,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792797279841,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792797579937,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792797879987,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792798179999,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792798479982,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792798780069,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792799080142,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792799380150,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792799680168,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792799980191,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792800215208,"kind":"step_error","error":"Missing or invalid parameters.\nDouble check you have provided the correct parameters.\n\nURL: https://testnet-rpc.elysium.kinetiq.xyz\nRequest body: {\"method\":\"eth_call\",\"params\":[{\"data\":\"0x55a17aba0000000000000000000000000000000000000000000000000000000000000001\",\"to\":\"0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b\"},\"latest\"]}\n \nRaw Call Arguments:\n  to:    0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b\n  data:  0x55a17aba0000000000000000000000000000000000000000000000000000000000000001\n \nContract Call:\n "}
+{"t":1792800280229,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792800580269,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792800880336,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792801180377,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792801360371,"kind":"step_error","error":"Missing or invalid parameters.\nDouble check you have provided the correct parameters.\n\nURL: https://testnet-rpc.elysium.kinetiq.xyz\nRequest body: {\"method\":\"eth_call\",\"params\":[{\"data\":\"0x55a17aba0000000000000000000000000000000000000000000000000000000000000001\",\"to\":\"0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b\"},\"latest\"]}\n \nRaw Call Arguments:\n  to:    0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b\n  data:  0x55a17aba0000000000000000000000000000000000000000000000000000000000000001\n \nContract Call:\n "}
+{"t":1792801480407,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792801780451,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792801885582,"kind":"step_error","error":"Missing or invalid parameters.\nDouble check you have provided the correct parameters.\n\nURL: https://testnet-rpc.elysium.kinetiq.xyz\nRequest body: {\"method\":\"eth_call\",\"params\":[{\"data\":\"0x55a17aba0000000000000000000000000000000000000000000000000000000000000001\",\"to\":\"0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b\"},\"latest\"]}\n \nRaw Call Arguments:\n  to:    0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b\n  data:  0x55a17aba0000000000000000000000000000000000000000000000000000000000000001\n \nContract Call:\n "}
+{"t":1792802080533,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792802380543,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792802455509,"kind":"step_error","error":"Missing or invalid parameters.\nDouble check you have provided the correct parameters.\n\nURL: https://testnet-rpc.elysium.kinetiq.xyz\nRequest body: {\"method\":\"eth_call\",\"params\":[{\"data\":\"0x55a17aba0000000000000000000000000000000000000000000000000000000000000001\",\"to\":\"0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b\"},\"latest\"]}\n \nRaw Call Arguments:\n  to:    0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b\n  data:  0x55a17aba0000000000000000000000000000000000000000000000000000000000000001\n \nContract Call:\n "}
+{"t":1792802680593,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792802785723,"kind":"step_error","error":"Missing or invalid parameters.\nDouble check you have provided the correct parameters.\n\nURL: https://testnet-rpc.elysium.kinetiq.xyz\nRequest body: {\"method\":\"eth_call\",\"params\":[{\"data\":\"0x55a17aba0000000000000000000000000000000000000000000000000000000000000001\",\"to\":\"0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b\"},\"latest\"]}\n \nRaw Call Arguments:\n  to:    0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b\n  data:  0x55a17aba0000000000000000000000000000000000000000000000000000000000000001\n \nContract Call:\n "}
+{"t":1792802980595,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792803255592,"kind":"step_error","error":"Missing or invalid parameters.\nDouble check you have provided the correct parameters.\n\nURL: https://testnet-rpc.elysium.kinetiq.xyz\nRequest body: {\"method\":\"eth_call\",\"params\":[{\"data\":\"0x55a17aba0000000000000000000000000000000000000000000000000000000000000001\",\"to\":\"0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b\"},\"latest\"]}\n \nRaw Call Arguments:\n  to:    0xb040b0e560e7103abb7f89b190a2fe0cd161fd3b\n  data:  0x55a17aba0000000000000000000000000000000000000000000000000000000000000001\n \nContract Call:\n "}
+{"t":1792803280595,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792803580692,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792803880719,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792804180772,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792804480802,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792804780829,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792805080870,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792805380949,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792805680932,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792805981016,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792806281013,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792806581154,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792806881113,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792807181175,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792807481233,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792807781276,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1792807793427,"kind":"shutdown","signal":"SIGTERM"}
