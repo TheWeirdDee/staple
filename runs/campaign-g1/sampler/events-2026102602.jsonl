@@ -1,0 +1,49 @@
+{"t":1792980552686,"event":"connected"}
+{"t":1792981172540,"event":"connected"}
+{"t":1792981225577,"event":"disconnected","error":"no close frame received or sent"}
+{"t":1792981226967,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792981229318,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792981233695,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792981242051,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792981258390,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792981288781,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792981319165,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792981349479,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792981379825,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792981410213,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792981440563,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792981470893,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792981501285,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792981531507,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792981561873,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792981592252,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792981622585,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792981652934,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792981683322,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792981713562,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792981743921,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792981774270,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792981804644,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792981834965,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792981865350,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792981895725,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792981926124,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792981956435,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792981986806,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792982017154,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792982047552,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792982077908,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792982108289,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792982138602,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792982168979,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792982199363,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792982229713,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792982260090,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792982290483,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792982320802,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792982351189,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792982381561,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792982411937,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792982442286,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1792982472677,"event":"connected"}
+{"t":1792983108797,"event":"connected"}
