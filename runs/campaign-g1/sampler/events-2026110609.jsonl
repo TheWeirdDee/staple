@@ -1,0 +1,8 @@
+{"t":1793955624629,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1793955654878,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
+{"t":1793955685126,"event":"connected"}
+{"t":1793956369271,"event":"connected"}
+{"t":1793956991008,"event":"connected"}
+{"t":1793957653670,"event":"connected"}
+{"t":1793958311457,"event":"connected"}
+{"t":1793959008944,"event":"connected"}
