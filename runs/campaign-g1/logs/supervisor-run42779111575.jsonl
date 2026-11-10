@@ -1,0 +1,3 @@
+{"t":1794297556835,"service":"sampler","event":"start"}
+{"t":1794297556836,"service":"watcher","event":"start"}
+{"t":1794297556836,"service":"keeper","event":"start"}
