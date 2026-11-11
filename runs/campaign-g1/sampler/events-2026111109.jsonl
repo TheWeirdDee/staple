@@ -1,9 +1,10 @@
-{"t":1794388119882,"event":"connected"}
-{"t":1794388262138,"event":"disconnected","error":"no close frame received or sent"}
-{"t":1794388263484,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
-{"t":1794388265858,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
-{"t":1794388270207,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
-{"t":1794388278557,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
-{"t":1794388294868,"event":"disconnected","error":"server rejected WebSocket connection: HTTP 502"}
-{"t":1794388325227,"event":"connected"}
-{"t":1794389013352,"event":"connected"}
+{"t":1794389099796,"event":"start","coin":"PURR/USDC","network":"testnet","depth":10,"version":1}
+{"t":1794389100219,"event":"connected"}
+{"t":1794389748446,"event":"connected"}
+{"t":1794390403780,"event":"disconnected","error":"timed out during handshake"}
+{"t":1794390415783,"event":"disconnected","error":"timed out during handshake"}
+{"t":1794390429787,"event":"disconnected","error":"timed out during handshake"}
+{"t":1794390447791,"event":"disconnected","error":"timed out during handshake"}
+{"t":1794390473794,"event":"disconnected","error":"timed out during handshake"}
+{"t":1794390504146,"event":"connected"}
+{"t":1794391139097,"event":"connected"}
