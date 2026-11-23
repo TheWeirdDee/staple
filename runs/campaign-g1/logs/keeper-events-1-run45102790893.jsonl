@@ -1,0 +1,70 @@
+{"t":1795407321389,"kind":"recovery","recovered":true,"live":0,"outcomes":0}
+{"t":1795407321591,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795407626238,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795407926289,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795408226333,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795408526388,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795408826412,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795409126455,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795409426506,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795409726513,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795410026576,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795410326592,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795410626669,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795410926694,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795411226731,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795411526751,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795411826802,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795412126834,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795412426894,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795412726938,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795413026972,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795413326995,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795413627033,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795413927081,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795414227121,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795414527147,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795414827181,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795415127229,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795415427246,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795415727300,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795416027352,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795416327341,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795416627473,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795416927492,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795417227527,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795417527582,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795417827628,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795418127707,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795418427715,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795418727772,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795419027790,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795419327847,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795419627885,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795419927928,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795420227987,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795420528051,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795420828098,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795421128159,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795421428167,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795421728195,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795422036072,"kind":"rate_limit_error","error":"/info request failed: This operation was aborted"}
+{"t":1795422339393,"kind":"rate_limit_error","error":"/info request failed: This operation was aborted"}
+{"t":1795422642566,"kind":"rate_limit_error","error":"/info request failed: This operation was aborted"}
+{"t":1795422945736,"kind":"rate_limit_error","error":"/info request failed: This operation was aborted"}
+{"t":1795423248908,"kind":"rate_limit_error","error":"/info request failed: This operation was aborted"}
+{"t":1795423552239,"kind":"rate_limit_error","error":"/info request failed: This operation was aborted"}
+{"t":1795423855414,"kind":"rate_limit_error","error":"/info request failed: This operation was aborted"}
+{"t":1795424150790,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795424450832,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795424750873,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795425050906,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795425350969,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795425651022,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795425951064,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795426251098,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795426551145,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795426851152,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795427151227,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795427451267,"kind":"rate_limit","used":0,"cap":10000,"placementsAllowed":true}
+{"t":1795427749949,"kind":"shutdown","signal":"SIGTERM"}
