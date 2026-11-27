@@ -1,0 +1,8 @@
+{"t":1795773741750,"event":"connected"}
+{"t":1795774162910,"event":"disconnected","error":"no close frame received or sent"}
+{"t":1795774173914,"event":"disconnected","error":"timed out during handshake"}
+{"t":1795774185918,"event":"disconnected","error":"timed out during handshake"}
+{"t":1795774199922,"event":"disconnected","error":"timed out during handshake"}
+{"t":1795774217924,"event":"disconnected","error":"timed out during handshake"}
+{"t":1795774243928,"event":"disconnected","error":"timed out during handshake"}
+{"t":1795774274251,"event":"connected"}
